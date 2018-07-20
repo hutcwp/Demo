@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#55a6a9"
+    tools:context=".Main3Activity">
+
+    <me.hutcwp.demo.danmu.BarrageView
+        android:id="@+id/barrageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </me.hutcwp.demo.danmu.BarrageView>
+
+    <Button
+        android:id="@+id/btn_danmu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:text="弹幕位置切换" />
+
+</FrameLayout>

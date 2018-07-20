@@ -2,7 +2,6 @@ package me.hutcwp.demo;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,8 +14,15 @@ public class MainActivity extends AppCompatActivity {
 
     @Bind(R.id.tv)
     TextView mTextView;
+
     @Bind(R.id.btn)
     Button mButton;
+
+    @Bind(R.id.btn2)
+    Button mButton2;
+
+    @Bind(R.id.btn3)
+    Button mButton3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +35,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @OnClick(R.id.btn)
-    public void test(){
-        Toast.makeText(this,"click",Toast.LENGTH_LONG).show();
+    //目前只能是无参数的方法
+    public void test() {
+        Toast.makeText(this, "click btn", Toast.LENGTH_LONG).show();
+    }
+
+    @OnClick(R.id.btn2)
+    public void tes2t() {
+        Toast.makeText(this, "click btn2", Toast.LENGTH_LONG).show();
+    }
+
+    @OnClick(R.id.btn3)
+    public void test3() {
+        Toast.makeText(this, "click btn3", Toast.LENGTH_LONG).show();
     }
 }
