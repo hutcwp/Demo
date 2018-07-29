@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="#fff"
+    android:layout_height="match_parent">
+
+    <me.hutcwp.demo.ui.view.RateLayout
+        android:id="@+id/video_view"
+        android:background="#545"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </me.hutcwp.demo.ui.view.RateLayout>
+
+    <FrameLayout
+        android:layout_below="@id/video_view"
+        android:id="@+id/public_message_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </FrameLayout>
+
+
+</RelativeLayout>

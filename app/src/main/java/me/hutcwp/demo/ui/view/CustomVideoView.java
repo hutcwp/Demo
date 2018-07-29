@@ -1,4 +1,4 @@
-package me.hutcwp.demo;
+package me.hutcwp.demo.ui.view;
 
 import android.content.Context;
 import android.media.MediaMetadataRetriever;

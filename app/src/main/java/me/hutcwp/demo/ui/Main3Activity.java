@@ -1,4 +1,4 @@
-package me.hutcwp.demo;
+package me.hutcwp.demo.ui;
 
 import android.graphics.Color;
 import android.os.Handler;
@@ -10,6 +10,7 @@ import android.widget.Toast;
 import me.hutcwp.apt_api.ViewInjector;
 import me.hutcwp.apt_lib.Bind;
 import me.hutcwp.apt_lib.OnClick;
+import me.hutcwp.demo.R;
 import me.hutcwp.demo.danmu.Barrage;
 import me.hutcwp.demo.danmu.BarrageView;
 

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#55a6a9"
-    tools:context=".Main3Activity">
+    tools:context=".ui.Main3Activity">
 
     <me.hutcwp.demo.danmu.BarrageView
         android:id="@+id/barrageView"

@@ -1,7 +1,8 @@
-package me.hutcwp.demo;
+package me.hutcwp.demo.ui;
 
-import android.support.v7.app.AppCompatActivity;
+
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -9,6 +10,7 @@ import android.widget.Toast;
 import me.hutcwp.apt_api.ViewInjector;
 import me.hutcwp.apt_lib.Bind;
 import me.hutcwp.apt_lib.OnClick;
+import me.hutcwp.demo.R;
 
 public class MainActivity extends AppCompatActivity {
 

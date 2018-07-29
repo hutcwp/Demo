@@ -1,4 +1,4 @@
-package me.hutcwp.demo;
+package me.hutcwp.demo.ui;
 
 import android.graphics.Color;
 import android.media.MediaPlayer;
@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.MediaController;
 import android.widget.Toast;
-import android.widget.VideoView;
 
 import java.util.Random;
 
@@ -19,6 +18,8 @@ import master.flame.danmaku.danmaku.model.android.DanmakuContext;
 import master.flame.danmaku.danmaku.model.android.Danmakus;
 import master.flame.danmaku.danmaku.parser.BaseDanmakuParser;
 import master.flame.danmaku.ui.widget.DanmakuView;
+import me.hutcwp.demo.R;
+import me.hutcwp.demo.ui.view.CustomVideoView;
 
 public class Main2Activity extends AppCompatActivity {
 
