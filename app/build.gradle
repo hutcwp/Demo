@@ -30,4 +30,41 @@ dependencies {
     compile project(path: ':apt-api')
     annotationProcessor project(':apt-process')
     compile 'com.github.ctiao:DanmakuFlameMaster:0.5.3'
+
+    compile("io.reactivex.rxjava2:rxjava:${rxjava_version}") {
+        exclude group: 'com.android.support', module: 'appcompat-v7'
+    }
+    compile("io.reactivex.rxjava2:rxandroid:${rxandroid_version}") {
+        exclude group: 'com.android.support', module: 'appcompat-v7'
+        exclude group: 'io.reactivex.rxjava2', module: 'rxjava'
+    }
+    compile("com.trello.rxlifecycle2:rxlifecycle:${rxlifecycle_version}") {
+        exclude group: 'com.android.support', module: 'appcompat-v7'
+        exclude group: 'com.google.code.findbugs', module: 'jsr305'
+        exclude group: 'com.android.support', module: 'support-annotations'
+        exclude group: 'io.reactivex.rxjava2', module: 'rxjava'
+    }
+    compile("com.trello.rxlifecycle2:rxlifecycle-android:${rxlifecycle_version}") {
+        exclude group: 'com.android.support', module: 'appcompat-v7'
+        exclude group: 'com.google.code.findbugs', module: 'jsr305'
+        exclude group: 'com.android.support', module: 'support-annotations'
+        exclude group: 'com.trello.rxlifecycle2', module: 'rxlifecycle'
+        exclude group: 'io.reactivex.rxjava2', module: 'rxjava'
+        exclude group: 'io.reactivex.rxjava2', module: 'rxandroid'
+    }
+    compile("com.trello.rxlifecycle2:rxlifecycle-components:${rxlifecycle_version}") {
+        exclude group: 'com.android.support', module: 'appcompat-v7'
+        exclude group: 'com.google.code.findbugs', module: 'jsr305'
+        exclude group: 'com.android.support', module: 'support-annotations'
+        exclude group: 'io.reactivex.rxjava2', module: 'rxjava'
+        exclude group: 'io.reactivex.rxjava2', module: 'rxandroid'
+    }
+    compile('com.jakewharton.rxrelay2:rxrelay:2.0.0') {
+        exclude group: 'com.android.support', module: 'appcompat-v7'
+        exclude group: 'com.google.code.findbugs', module: 'jsr305'
+        exclude group: 'com.android.support', module: 'support-annotations'
+        exclude group: 'io.reactivex.rxjava2', module: 'rxjava'
+    }
+
+
 }
