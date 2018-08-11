@@ -8,22 +8,22 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import me.hutcwp.apt_api.ViewInjector;
-import me.hutcwp.apt_lib.Bind;
+import me.hutcwp.apt_lib.BindView;
 import me.hutcwp.apt_lib.OnClick;
 import me.hutcwp.demo.R;
 
-public class MainActivity extends AppCompatActivity {
+public class AnnotationActivity extends AppCompatActivity {
 
-    @Bind(R.id.tv)
+    @BindView(R.id.tv)
     TextView mTextView;
 
-    @Bind(R.id.btn)
+    @BindView(R.id.btn)
     Button mButton;
 
-    @Bind(R.id.btn2)
+    @BindView(R.id.btn2)
     Button mButton2;
 
-    @Bind(R.id.btn3)
+    @BindView(R.id.btn3)
     Button mButton3;
 
     @Override

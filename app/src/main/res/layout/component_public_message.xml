@@ -14,4 +14,20 @@
         android:textColor="#000"
         tools:layout_editor_absoluteX="163dp"
         tools:layout_editor_absoluteY="254dp" />
+
+    <Button
+        android:id="@+id/btnLog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:text="log" />
+
+    <Button
+        android:id="@+id/btnTest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:text="test" />
+
+
 </FrameLayout>

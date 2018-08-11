@@ -7,9 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import me.hutcwp.demo.R;
-import me.hutcwp.demo.base.Component;
+import me.hutcwp.demo.base.component.Component;
+import me.hutcwp.demo.base.mvp.BindPresenter;
+import me.hutcwp.demo.ui.presenter.VideoComponentPresenter;
 
-public class VideoComponent extends Component {
+@BindPresenter(presenter = VideoComponentPresenter.class)
+public class VideoComponent extends Component<VideoComponentPresenter,IVideoComponent> implements IVideoComponent {
 
     public static final String TAG = "VideoComponent";
 

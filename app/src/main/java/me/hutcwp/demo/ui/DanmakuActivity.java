@@ -21,7 +21,7 @@ import master.flame.danmaku.ui.widget.DanmakuView;
 import me.hutcwp.demo.R;
 import me.hutcwp.demo.ui.view.CustomVideoView;
 
-public class Main2Activity extends AppCompatActivity {
+public class DanmakuActivity extends AppCompatActivity {
 
     private boolean showDanmaku;
 
@@ -83,7 +83,7 @@ public class Main2Activity extends AppCompatActivity {
         videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
-                Toast.makeText(Main2Activity.this, "播放完成了", Toast.LENGTH_SHORT).show();
+                Toast.makeText(DanmakuActivity.this, "播放完成了", Toast.LENGTH_SHORT).show();
             }
         });
     }

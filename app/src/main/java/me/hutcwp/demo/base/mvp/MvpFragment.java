@@ -2,64 +2,66 @@ package me.hutcwp.demo.base.mvp;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-
+import me.hutcwp.demo.base.util.MLog;
 import com.trello.rxlifecycle2.components.support.RxFragment;
 
-/**
- * A Fragment that uses an {@link MvpPresenter} to implement a Model-View-Presenter
- *
- * @author huangfan(kael)
- * @time 2017/7/26 21:44
- */
 
 public class MvpFragment<P extends MvpPresenter<V>, V extends MvpView> extends RxFragment
-        implements MvpInnerDelegateCallback<P, V>, MvpView {
+        implements MvpView {
+
+    private static final String TAG = "MvpFragment";
 
     protected P mPresenter;
-    private MvpInnerDelegate<P, V> mMvpInnerDelegate;
 
-    @Override
+    private static final String ANNOTATION_DELEGATE_BIND = "me.hutcwp.demo.base.mvp.BindPresenter";
+
+
     public P createPresenter() {
         if (mPresenter == null) {
-            mPresenter = getMvpDelegate().createPresenter();
+            mPresenter = getPresenterBinder(getMvpView());
         }
         return mPresenter;
     }
+
+    private P getPresenterBinder(V v) {
+        Class<?> tClass = v.getClass();
+        boolean isBindPresenter = tClass.isAnnotationPresent(BindPresenter.class);
+        if (isBindPresenter) {
+            BindPresenter annotation = tClass.getAnnotation(BindPresenter.class);
+            try {
+                MLog.debug(TAG, "create presenter instance success");
+                P p =  (P) annotation.presenter().newInstance();
+                return p;
+            } catch (java.lang.InstantiationException e1) {
+                MLog.error(TAG, "create presenter fail : " + e1.getMessage());
+                e1.printStackTrace();
+            } catch (IllegalAccessException e1) {
+                e1.printStackTrace();
+            }
+        }
+        return null;
+    }
+
 
     @NonNull
     public P getPresenter() {
         return mPresenter;
     }
 
-    @Override
-    public void setPresenter(@NonNull P presenter) {
-        mPresenter = presenter;
-    }
 
-    @Override
     @NonNull
     public V getMvpView() {
         return (V) this;
     }
 
     @Override
-    @NonNull
-    public MvpInnerDelegate<P, V> getMvpDelegate() {
-        if (mMvpInnerDelegate == null) {
-            mMvpInnerDelegate = onCreateDelegate();
-        }
-        return mMvpInnerDelegate;
-    }
-
-    protected MvpInnerDelegate<P, V> onCreateDelegate() {
-        return new MvpInnerDelegate<>(this);
-    }
-
-    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         createPresenter();
-        getMvpDelegate().attachView(savedInstanceState);
+        if (mPresenter != null) {
+            mPresenter.attachView(getMvpView());
+            mPresenter.onCreate(savedInstanceState);
+        }
     }
 
     @Override
@@ -90,6 +92,6 @@ public class MvpFragment<P extends MvpPresenter<V>, V extends MvpView> extends R
     public void onDestroy() {
         super.onDestroy();
         getPresenter().onDestroy();
-        getMvpDelegate().detach();
     }
+
 }

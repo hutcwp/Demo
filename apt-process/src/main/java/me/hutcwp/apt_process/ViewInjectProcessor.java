@@ -25,7 +25,7 @@ import javax.lang.model.util.Elements;
 import javax.tools.Diagnostic;
 import javax.tools.JavaFileObject;
 
-import me.hutcwp.apt_lib.Bind;
+import me.hutcwp.apt_lib.BindView;
 import me.hutcwp.apt_lib.OnClick;
 
 
@@ -51,7 +51,7 @@ public class ViewInjectProcessor extends AbstractProcessor {
     @Override
     public Set<String> getSupportedAnnotationTypes() {
         HashSet<String> supportTypes = new LinkedHashSet<>();
-        supportTypes.add(Bind.class.getCanonicalName());
+        supportTypes.add(BindView.class.getCanonicalName());
         supportTypes.add(OnClick.class.getCanonicalName());
         return supportTypes;
     }
@@ -66,10 +66,10 @@ public class ViewInjectProcessor extends AbstractProcessor {
         messager.printMessage(Diagnostic.Kind.NOTE, "process...");
         mProxyMap.clear();
 
-        Set<? extends Element> elesWithBind = roundEnv.getElementsAnnotatedWith(Bind.class);
+        Set<? extends Element> elesWithBind = roundEnv.getElementsAnnotatedWith(BindView.class);
         for (Element element : elesWithBind) {
             // 判断是变量类型，并且是访问类型public ，这里会出问题！！！？
-            checkAnnotationValid(element, Bind.class);
+            checkAnnotationValid(element, BindView.class);
 
             VariableElement variableElement = (VariableElement) element;
             //class type
@@ -83,8 +83,8 @@ public class ViewInjectProcessor extends AbstractProcessor {
                 mProxyMap.put(fqClassName, proxyInfo);
             }
 
-            Bind bindAnnotation = variableElement.getAnnotation(Bind.class);
-            int id = bindAnnotation.value();
+            BindView bindViewAnnotation = variableElement.getAnnotation(BindView.class);
+            int id = bindViewAnnotation.value();
             proxyInfo.injectVariables.put(id, variableElement);
         }
 

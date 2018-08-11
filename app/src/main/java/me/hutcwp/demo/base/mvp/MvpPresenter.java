@@ -11,8 +11,6 @@ import me.hutcwp.demo.api.CompatOptional;
 /**
  * base presenter for referring to the attach view
  *
- * @author huangfan(kael)
- * @time 2017/7/26 21:30
  */
 
 public class MvpPresenter<V extends MvpView> {
