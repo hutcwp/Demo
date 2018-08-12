@@ -1,4 +1,4 @@
-package me.hutcwp.demo.ui;
+package me.hutcwp.demo.ui.activity;
 
 import android.graphics.Color;
 import android.media.MediaPlayer;

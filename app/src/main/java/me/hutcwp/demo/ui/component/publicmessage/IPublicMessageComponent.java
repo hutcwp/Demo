@@ -1,4 +1,4 @@
-package me.hutcwp.demo.ui.component;
+package me.hutcwp.demo.ui.component.publicmessage;
 
 import me.hutcwp.demo.base.mvp.MvpView;
 

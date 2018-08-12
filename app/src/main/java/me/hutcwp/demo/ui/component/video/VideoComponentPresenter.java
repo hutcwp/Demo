@@ -1,7 +1,6 @@
-package me.hutcwp.demo.ui.presenter;
+package me.hutcwp.demo.ui.component.video;
 
 import me.hutcwp.demo.base.mvp.MvpPresenter;
-import me.hutcwp.demo.ui.component.IVideoComponent;
 
 public class VideoComponentPresenter extends MvpPresenter<IVideoComponent> {
 }

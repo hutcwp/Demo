@@ -13,22 +13,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
 
-        <activity android:name=".ui.DanmakuActivity">
+        <activity android:name=".ui.activity.DanmakuActivity">
 
         </activity>
 
-        <activity android:name=".ui.LiveActivity">
+        <activity android:name=".ui.activity.LiveActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.AnnotationActivity">
+        <activity android:name=".ui.activity.AnnotationActivity">
 
         </activity>
 
-        <activity android:name=".ui.SelfDanmuActivity">
+        <activity android:name=".ui.activity.SelfDanmuActivity">
 
         </activity>
 

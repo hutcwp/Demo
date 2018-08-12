@@ -2,17 +2,22 @@ package me.hutcwp.demo.base.mvp;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+
+import com.trello.rxlifecycle2.components.support.RxFragmentActivity;
+
 import me.hutcwp.demo.base.util.MLog;
-import com.trello.rxlifecycle2.components.support.RxFragment;
 
+/**
+ * A Activity that uses an {@link MvpPresenter} to implement a Model-View-Presenter
+ *
+ */
 
-public class MvpFragment<P extends MvpPresenter<V>, V extends MvpView> extends RxFragment
-        implements MvpView {
+public class MvpActivity<P extends MvpPresenter<V>, V extends MvpView> extends RxFragmentActivity
+       implements MvpView {
 
-    private static final String TAG = "MvpFragment";
+    private static final String TAG = "MvpActivity";
 
     protected P mPresenter;
-
 
     public P createPresenter() {
         if (mPresenter == null) {
@@ -21,20 +26,23 @@ public class MvpFragment<P extends MvpPresenter<V>, V extends MvpView> extends R
         return mPresenter;
     }
 
-
     @NonNull
     public P getPresenter() {
         return mPresenter;
     }
 
+    public void setPresenter(@NonNull P presenter) {
+        mPresenter = presenter;
+    }
 
     @NonNull
     public V getMvpView() {
         return (V) this;
     }
 
+
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         createPresenter();
         if (mPresenter != null) {
@@ -44,35 +52,34 @@ public class MvpFragment<P extends MvpPresenter<V>, V extends MvpView> extends R
     }
 
     @Override
-    public void onStart() {
+    protected void onStart() {
         super.onStart();
         getPresenter().onStart();
     }
 
     @Override
-    public void onPause() {
+    protected void onPause() {
         super.onPause();
         getPresenter().onPause();
     }
 
     @Override
-    public void onResume() {
+    protected void onResume() {
         super.onResume();
         getPresenter().onResume();
     }
 
     @Override
-    public void onStop() {
+    protected void onStop() {
         super.onStop();
         getPresenter().onStop();
     }
 
     @Override
-    public void onDestroy() {
+    protected void onDestroy() {
         super.onDestroy();
         getPresenter().onDestroy();
     }
-
 
     private P getPresenterBinder(V v) {
         Class<?> tClass = v.getClass();

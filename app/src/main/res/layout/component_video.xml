@@ -1,19 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="260dp"
-    android:background="#d4a4a4">
+    >
 
-    <TextView
-        android:id="@+id/videoComponent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="视频组件"
-        android:textColor="#000"
-        android:textSize="22sp"
-        tools:layout_editor_absoluteX="143dp"
-        tools:layout_editor_absoluteY="240dp" />
+    <me.hutcwp.demo.ui.view.CustomVideoView
+        android:id="@+id/videoView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
 
 </FrameLayout>

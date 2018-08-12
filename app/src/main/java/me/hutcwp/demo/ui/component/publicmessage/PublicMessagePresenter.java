@@ -1,8 +1,8 @@
-package me.hutcwp.demo.ui.presenter;
+package me.hutcwp.demo.ui.component.publicmessage;
 
 import me.hutcwp.demo.base.mvp.MvpPresenter;
-import me.hutcwp.demo.ui.component.IPublicMessageComponent;
-import me.hutcwp.demo.ui.component.PublicMessageComponent;
+import me.hutcwp.demo.ui.component.publicmessage.IPublicMessageComponent;
+import me.hutcwp.demo.ui.component.publicmessage.PublicMessageComponent;
 
 public class PublicMessagePresenter extends MvpPresenter<IPublicMessageComponent> {
 
