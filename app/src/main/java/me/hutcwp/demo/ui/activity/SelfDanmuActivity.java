@@ -7,9 +7,9 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.Toast;
 
-import me.hutcwp.apt_api.ViewInjector;
-import me.hutcwp.apt_lib.BindView;
-import me.hutcwp.apt_lib.OnClick;
+import me.hutcwp.apt_api.Injector;
+import me.hutcwp.apt_lib.annotation.BindView;
+import me.hutcwp.apt_lib.annotation.OnClick;
 import me.hutcwp.demo.R;
 import me.hutcwp.demo.danmu.Barrage;
 import me.hutcwp.demo.danmu.BarrageView;
@@ -32,7 +32,7 @@ public class SelfDanmuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
-        ViewInjector.injectView(this);
+        Injector.inject(this);
 
         barrageView = findViewById(R.id.barrageView);
 

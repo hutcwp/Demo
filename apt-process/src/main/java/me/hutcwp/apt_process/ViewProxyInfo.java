@@ -4,7 +4,6 @@ package me.hutcwp.apt_process;
  * Created by hutcwp on 2018/4/19.
  */
 
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,8 +13,9 @@ import javax.lang.model.element.TypeElement;
 import javax.lang.model.element.VariableElement;
 import javax.lang.model.util.Elements;
 
-public class ProxyInfo {
+public class ViewProxyInfo {
     private String packageName;
+    private String className;
     private String proxyClassName;
     private TypeElement typeElement;
 
@@ -24,16 +24,12 @@ public class ProxyInfo {
 
     public static final String PROXY = "ViewInject";
 
-    public ProxyInfo(Elements elementUtils, TypeElement classElement) {
+    public ViewProxyInfo(Elements elementUtils, TypeElement classElement) {
         this.typeElement = classElement;
-        PackageElement packageElement = elementUtils.getPackageOf(classElement);
-        String packageName = packageElement.getQualifiedName().toString();
-        //classname
-        String className = ClassValidator.getClassName(classElement, packageName);
-        this.packageName = packageName;
+        this.packageName = elementUtils.getPackageOf(classElement).getQualifiedName().toString();
+        this.className = ClassValidator.getClassName(classElement, packageName);
         this.proxyClassName = className + "$$" + PROXY;
     }
-
 
     public String generateJavaCode() {
         StringBuilder builder = new StringBuilder();
@@ -41,11 +37,10 @@ public class ProxyInfo {
         builder.append("package ").append(packageName).append(";\n\n");
         builder.append("import me.hutcwp.apt_api.*;\n");
         builder.append("import android.view.View;\n");
+        builder.append("import " + packageName + "." + className + ";\n");
         builder.append('\n');
-
-        builder.append("public class ").append(proxyClassName).append(" implements " + ProxyInfo.PROXY + "<" + typeElement.getQualifiedName() + ">");
+        builder.append("public class ").append(proxyClassName).append(" implements " + "Inject" + "<" + typeElement.getQualifiedName() + ">");
         builder.append(" {\n");
-
         generateMethods(builder);
         builder.append('\n');
 

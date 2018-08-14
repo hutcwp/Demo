@@ -25,8 +25,8 @@ import javax.lang.model.util.Elements;
 import javax.tools.Diagnostic;
 import javax.tools.JavaFileObject;
 
-import me.hutcwp.apt_lib.BindView;
-import me.hutcwp.apt_lib.OnClick;
+import me.hutcwp.apt_lib.annotation.BindView;
+import me.hutcwp.apt_lib.annotation.OnClick;
 
 
 /**
@@ -38,7 +38,7 @@ import me.hutcwp.apt_lib.OnClick;
 public class ViewInjectProcessor extends AbstractProcessor {
     private Messager messager;
     private Elements elementUtils;
-    private Map<String, ProxyInfo> mProxyMap = new HashMap<String, ProxyInfo>();
+    private Map<String, ViewProxyInfo> mProxyMap = new HashMap<String, ViewProxyInfo>();
 
     @Override
     public synchronized void init(ProcessingEnvironment processingEnv) {
@@ -65,10 +65,57 @@ public class ViewInjectProcessor extends AbstractProcessor {
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
         messager.printMessage(Diagnostic.Kind.NOTE, "process...");
         mProxyMap.clear();
+        praseBind(roundEnv);
+        praseClick(roundEnv);
+        autoCode();
+        return true;
+    }
 
+    private void autoCode() {
+        //统一进行文件生成
+        for (String key : mProxyMap.keySet()) {
+            ViewProxyInfo viewProxyInfo = mProxyMap.get(key);
+            try {
+                JavaFileObject jfo = processingEnv.getFiler().createSourceFile(
+                        viewProxyInfo.getProxyClassFullName(),
+                        viewProxyInfo.getTypeElement());
+                Writer writer = jfo.openWriter();
+                writer.write(viewProxyInfo.generateJavaCode());
+                writer.flush();
+                writer.close();
+            } catch (IOException e) {
+                error(viewProxyInfo.getTypeElement(),
+                        "Unable to write injector for type %s: %s",
+                        viewProxyInfo.getTypeElement(), e.getMessage());
+            }
+
+        }
+    }
+
+    private void praseClick(RoundEnvironment roundEnv) {
+        Set<? extends Element> elesWithOnClick = roundEnv.getElementsAnnotatedWith(OnClick.class);
+        for (Element element : elesWithOnClick) {
+            checkAnnotationValid(element, OnClick.class);
+            //class type
+            TypeElement classElement = (TypeElement) element.getEnclosingElement();
+            //full class name
+            String fqClassName = classElement.getQualifiedName().toString();
+            ViewProxyInfo viewProxyInfo = mProxyMap.get(fqClassName);
+            if (viewProxyInfo == null) {
+                viewProxyInfo = new ViewProxyInfo(elementUtils, classElement);
+                mProxyMap.put(fqClassName, viewProxyInfo);
+            }
+
+            OnClick clickAnnotation = element.getAnnotation(OnClick.class);
+            int id = clickAnnotation.value();
+            viewProxyInfo.injectClickMethods.put(id, element);
+        }
+    }
+
+    private void praseBind(RoundEnvironment roundEnv) {
         Set<? extends Element> elesWithBind = roundEnv.getElementsAnnotatedWith(BindView.class);
         for (Element element : elesWithBind) {
-            // 判断是变量类型，并且是访问类型public ，这里会出问题！！！？
+
             checkAnnotationValid(element, BindView.class);
 
             VariableElement variableElement = (VariableElement) element;
@@ -77,58 +124,16 @@ public class ViewInjectProcessor extends AbstractProcessor {
             //full class name
             String fqClassName = classElement.getQualifiedName().toString();
 
-            ProxyInfo proxyInfo = mProxyMap.get(fqClassName);
-            if (proxyInfo == null) {
-                proxyInfo = new ProxyInfo(elementUtils, classElement);
-                mProxyMap.put(fqClassName, proxyInfo);
+            ViewProxyInfo viewProxyInfo = mProxyMap.get(fqClassName);
+            if (viewProxyInfo == null) {
+                viewProxyInfo = new ViewProxyInfo(elementUtils, classElement);
+                mProxyMap.put(fqClassName, viewProxyInfo);
             }
 
             BindView bindViewAnnotation = variableElement.getAnnotation(BindView.class);
             int id = bindViewAnnotation.value();
-            proxyInfo.injectVariables.put(id, variableElement);
+            viewProxyInfo.injectVariables.put(id, variableElement);
         }
-
-        Set<? extends Element> elesWithOnClick = roundEnv.getElementsAnnotatedWith(OnClick.class);
-        for (Element element : elesWithOnClick) {
-            // 判断是变量类型，并且是访问类型public ，这里会出问题！！！？
-            checkAnnotationValid(element, OnClick.class);
-
-//            VariableElement variableElement = (VariableElement) element;
-            //class type
-            TypeElement classElement = (TypeElement) element.getEnclosingElement();
-            //full class name
-            String fqClassName = classElement.getQualifiedName().toString();
-
-            ProxyInfo proxyInfo = mProxyMap.get(fqClassName);
-            if (proxyInfo == null) {
-                proxyInfo = new ProxyInfo(elementUtils, classElement);
-                mProxyMap.put(fqClassName, proxyInfo);
-            }
-
-            OnClick clickAnnotation = element.getAnnotation(OnClick.class);
-            int id = clickAnnotation.value();
-            proxyInfo.injectClickMethods.put(id, element);
-        }
-
-        //统一进行文件生成
-        for (String key : mProxyMap.keySet()) {
-            ProxyInfo proxyInfo = mProxyMap.get(key);
-            try {
-                JavaFileObject jfo = processingEnv.getFiler().createSourceFile(
-                        proxyInfo.getProxyClassFullName(),
-                        proxyInfo.getTypeElement());
-                Writer writer = jfo.openWriter();
-                writer.write(proxyInfo.generateJavaCode());
-                writer.flush();
-                writer.close();
-            } catch (IOException e) {
-                error(proxyInfo.getTypeElement(),
-                        "Unable to write injector for type %s: %s",
-                        proxyInfo.getTypeElement(), e.getMessage());
-            }
-
-        }
-        return true;
     }
 
     private boolean checkAnnotationValid(Element annotatedElement, Class clazz) {

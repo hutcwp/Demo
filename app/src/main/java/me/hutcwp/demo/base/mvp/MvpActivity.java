@@ -1,19 +1,21 @@
 package me.hutcwp.demo.base.mvp;
 
 import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 
 import com.trello.rxlifecycle2.components.support.RxFragmentActivity;
 
+import me.hutcwp.apt_api.Injector;
 import me.hutcwp.demo.base.util.MLog;
+import me.hutcwp.demo.ui.activity.LiveActivity;
 
 /**
  * A Activity that uses an {@link MvpPresenter} to implement a Model-View-Presenter
- *
  */
 
 public class MvpActivity<P extends MvpPresenter<V>, V extends MvpView> extends RxFragmentActivity
-       implements MvpView {
+        implements MvpView {
 
     private static final String TAG = "MvpActivity";
 
@@ -45,6 +47,7 @@ public class MvpActivity<P extends MvpPresenter<V>, V extends MvpView> extends R
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         createPresenter();
+        Injector.injectContainer(this);
         if (mPresenter != null) {
             mPresenter.attachView(getMvpView());
             mPresenter.onCreate(savedInstanceState);
@@ -88,7 +91,7 @@ public class MvpActivity<P extends MvpPresenter<V>, V extends MvpView> extends R
             BindPresenter annotation = tClass.getAnnotation(BindPresenter.class);
             try {
                 MLog.debug(TAG, "create presenter instance success");
-                P p =  (P) annotation.presenter().newInstance();
+                P p = (P) annotation.presenter().newInstance();
                 return p;
             } catch (java.lang.InstantiationException e1) {
                 MLog.error(TAG, "create presenter fail : " + e1.getMessage());
@@ -98,5 +101,11 @@ public class MvpActivity<P extends MvpPresenter<V>, V extends MvpView> extends R
             }
         }
         return null;
+    }
+
+    public void autoLoadComponent(@IdRes int resId, MvpFragment fragment) {
+        getSupportFragmentManager().beginTransaction()
+                .replace(resId, fragment)
+                .commitAllowingStateLoss();
     }
 }

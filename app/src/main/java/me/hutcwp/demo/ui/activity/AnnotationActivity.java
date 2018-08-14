@@ -7,9 +7,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import me.hutcwp.apt_api.ViewInjector;
-import me.hutcwp.apt_lib.BindView;
-import me.hutcwp.apt_lib.OnClick;
+import me.hutcwp.apt_api.Injector;
+import me.hutcwp.apt_lib.annotation.BindView;
+import me.hutcwp.apt_lib.annotation.OnClick;
 import me.hutcwp.demo.R;
 
 public class AnnotationActivity extends AppCompatActivity {
@@ -31,7 +31,7 @@ public class AnnotationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ViewInjector.injectView(this);
+        Injector.inject(this);
         mTextView.setText("hellow apt 编译时注解");
 
     }

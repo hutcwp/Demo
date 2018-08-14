@@ -1,4 +1,4 @@
-package me.hutcwp.apt_lib;
+package me.hutcwp.apt_lib.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

@@ -5,6 +5,6 @@ package me.hutcwp.apt_api;
  */
 
 
-public interface ViewInject<T> {
+public interface Inject<T> {
     void inject(T t, Object source);
 }
