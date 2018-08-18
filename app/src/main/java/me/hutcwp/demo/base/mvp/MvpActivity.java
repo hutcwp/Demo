@@ -6,9 +6,8 @@ import android.support.annotation.NonNull;
 
 import com.trello.rxlifecycle2.components.support.RxFragmentActivity;
 
-import me.hutcwp.apt_api.Injector;
+import hut.cwp.api.Injector;
 import me.hutcwp.demo.base.util.MLog;
-import me.hutcwp.demo.ui.activity.LiveActivity;
 
 /**
  * A Activity that uses an {@link MvpPresenter} to implement a Model-View-Presenter

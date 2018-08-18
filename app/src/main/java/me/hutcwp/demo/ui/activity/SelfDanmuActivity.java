@@ -1,15 +1,15 @@
 package me.hutcwp.demo.ui.activity;
 
 import android.graphics.Color;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.widget.Button;
 import android.widget.Toast;
 
-import me.hutcwp.apt_api.Injector;
-import me.hutcwp.apt_lib.annotation.BindView;
-import me.hutcwp.apt_lib.annotation.OnClick;
+import hut.cwp.annotations.BindView;
+import hut.cwp.annotations.OnClick;
+import hut.cwp.api.Injector;
 import me.hutcwp.demo.R;
 import me.hutcwp.demo.danmu.Barrage;
 import me.hutcwp.demo.danmu.BarrageView;

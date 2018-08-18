@@ -9,9 +9,6 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/apt-api" />
-            <option value="$PROJECT_DIR$/apt-lib" />
-            <option value="$PROJECT_DIR$/apt-process" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

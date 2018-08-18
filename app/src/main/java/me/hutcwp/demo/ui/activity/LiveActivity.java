@@ -3,8 +3,10 @@ package me.hutcwp.demo.ui.activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
-import me.hutcwp.apt_lib.annotation.InitAttrConfig;
-import me.hutcwp.apt_lib.annotation.InitAttrConfigs;
+import hut.cwp.annotations.InitAttrConfig;
+import hut.cwp.annotations.InitAttrConfigs;
+import hut.cwp.api.Injector;
+import io.reactivex.Observable;
 import me.hutcwp.demo.R;
 import me.hutcwp.demo.base.mvp.BindPresenter;
 import me.hutcwp.demo.base.mvp.MvpActivity;
@@ -24,8 +26,9 @@ public class LiveActivity extends MvpActivity<LivePresenter, ILiveActivity> impl
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_live);
-    }
+        Injector.injectContainer(this);
 
+    }
 }
 
 
