@@ -3,6 +3,8 @@ package me.hutcwp.demo.ui.activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
+import net.wequick.small.Small;
+
 import hut.cwp.annotations.InitAttrConfig;
 import hut.cwp.annotations.InitAttrConfigs;
 import hut.cwp.api.Injector;
@@ -28,6 +30,14 @@ public class LiveActivity extends MvpActivity<LivePresenter, ILiveActivity> impl
         setContentView(R.layout.activity_live);
         Injector.injectContainer(this);
 
+        Small.setUp(this, new net.wequick.small.Small.OnCompleteListener() {
+
+            @Override
+            public void onComplete() {
+                Small.openUri("main", LiveActivity.this);
+                //启动默认的Activity，参考wiki中的UI route启动其他Activity
+            }
+        });
     }
 }
 
