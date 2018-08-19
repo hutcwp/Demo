@@ -11,6 +11,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/app.livebiz" />
             <option value="$PROJECT_DIR$/app.main" />
+            <option value="$PROJECT_DIR$/lib.vendor" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

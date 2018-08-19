@@ -8,9 +8,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
-import me.hutcwp.demo.R;
-import me.hutcwp.demo.base.component.Component;
-import me.hutcwp.demo.base.mvp.BindPresenter;
+import com.hutcwp.livebiz.base.Component;
+
+import hut.cwp.mvp.BindPresenter;
+import com.hutcwp.livebiz.R;
 
 @BindPresenter(presenter = PublicMessagePresenter.class)
 public class PublicMessageComponent extends Component<PublicMessagePresenter, IPublicMessageComponent> implements IPublicMessageComponent {

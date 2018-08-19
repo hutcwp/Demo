@@ -7,10 +7,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.hutcwp.livebiz.R;
+
 import hut.cwp.annotations.BindView;
 import hut.cwp.annotations.OnClick;
 import hut.cwp.api.Injector;
-import me.hutcwp.demo.R;
+
 
 public class AnnotationActivity extends AppCompatActivity {
 

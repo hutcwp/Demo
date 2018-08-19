@@ -10,10 +10,11 @@ import android.view.ViewGroup;
 import android.widget.MediaController;
 import android.widget.Toast;
 
-import me.hutcwp.demo.R;
-import me.hutcwp.demo.base.component.Component;
-import me.hutcwp.demo.base.mvp.BindPresenter;
-import me.hutcwp.demo.ui.view.CustomVideoView;
+import com.hutcwp.livebiz.base.Component;
+import com.hutcwp.livebiz.ui.view.CustomVideoView;
+
+import hut.cwp.mvp.BindPresenter;
+import com.hutcwp.livebiz.R;
 
 @BindPresenter(presenter = VideoComponentPresenter.class)
 public class VideoComponent extends Component<VideoComponentPresenter,IVideoComponent> implements IVideoComponent {

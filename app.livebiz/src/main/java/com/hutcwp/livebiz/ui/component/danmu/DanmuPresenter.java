@@ -1,6 +1,6 @@
 package com.hutcwp.livebiz.ui.component.danmu;
 
-import me.hutcwp.demo.base.mvp.MvpPresenter;
+import hut.cwp.mvp.MvpPresenter;
 
-public class DanmuPresenter extends MvpPresenter<IDanmuComponent>{
+public class DanmuPresenter extends MvpPresenter<IDanmuComponent> {
 }

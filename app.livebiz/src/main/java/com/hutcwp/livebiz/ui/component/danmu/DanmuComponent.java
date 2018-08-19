@@ -7,8 +7,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.hutcwp.livebiz.R;
+
 import java.util.Random;
 
+import hut.cwp.mvp.BindPresenter;
+import hut.cwp.mvp.MvpFragment;
 import master.flame.danmaku.controller.DrawHandler;
 import master.flame.danmaku.danmaku.model.BaseDanmaku;
 import master.flame.danmaku.danmaku.model.DanmakuTimer;
@@ -17,9 +21,7 @@ import master.flame.danmaku.danmaku.model.android.DanmakuContext;
 import master.flame.danmaku.danmaku.model.android.Danmakus;
 import master.flame.danmaku.danmaku.parser.BaseDanmakuParser;
 import master.flame.danmaku.ui.widget.DanmakuView;
-import me.hutcwp.demo.R;
-import me.hutcwp.demo.base.mvp.BindPresenter;
-import me.hutcwp.demo.base.mvp.MvpFragment;
+
 
 @BindPresenter(presenter = DanmuPresenter.class)
 public class DanmuComponent extends MvpFragment<DanmuPresenter, IDanmuComponent> implements IDanmuComponent {

@@ -4,7 +4,7 @@
     android:layout_height="260dp"
     >
 
-    <me.hutcwp.demo.ui.view.CustomVideoView
+    <com.hutcwp.livebiz.ui.view.CustomVideoView
         android:id="@+id/videoView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

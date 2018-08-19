@@ -75,7 +75,7 @@ public class DanmakuActivity extends AppCompatActivity {
     }
 
     private void initVideoView() {
-        CustomVideoView videoView = findViewById(R.id.videoView);
+        CustomVideoView videoView = (CustomVideoView) findViewById(R.id.videoView);
 
         videoView.setMediaController(new MediaController(this));
 

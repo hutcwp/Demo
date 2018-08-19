@@ -15,6 +15,11 @@
       "type": "app",
       "uri": "livebiz",
       "pkg": "com.hutcwp.livebiz"
+    },
+    {
+      "type": "lib",
+      "uri": "lib.vendor",
+      "pkg": "com.hutcwp.libvendor"
     }
   ]
 }

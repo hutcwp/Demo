@@ -7,12 +7,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.hutcwp.livebiz.R;
+import com.hutcwp.livebiz.danmu.Barrage;
+import com.hutcwp.livebiz.danmu.BarrageView;
+
 import hut.cwp.annotations.BindView;
 import hut.cwp.annotations.OnClick;
 import hut.cwp.api.Injector;
-import me.hutcwp.demo.R;
-import me.hutcwp.demo.danmu.Barrage;
-import me.hutcwp.demo.danmu.BarrageView;
 
 public class SelfDanmuActivity extends AppCompatActivity {
 
@@ -34,7 +35,7 @@ public class SelfDanmuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main3);
         Injector.inject(this);
 
-        barrageView = findViewById(R.id.barrageView);
+        barrageView = (BarrageView) findViewById(R.id.barrageView);
 
         handler.post(new Runnable() {
             @Override
