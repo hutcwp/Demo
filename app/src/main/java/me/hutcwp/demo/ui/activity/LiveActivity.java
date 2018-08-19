@@ -30,6 +30,7 @@ public class LiveActivity extends MvpActivity<LivePresenter, ILiveActivity> impl
         setContentView(R.layout.activity_live);
         Injector.injectContainer(this);
 
+
         Small.setUp(this, new net.wequick.small.Small.OnCompleteListener() {
 
             @Override
@@ -38,6 +39,7 @@ public class LiveActivity extends MvpActivity<LivePresenter, ILiveActivity> impl
                 //启动默认的Activity，参考wiki中的UI route启动其他Activity
             }
         });
+        //
     }
 }
 
