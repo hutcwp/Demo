@@ -8,6 +8,11 @@ buildscript {
         maven {url 'https://dl.bintray.com/jfrogcwp/maven'}
     }
     dependencies {
+        classpath 'com.github.ctiao:DanmakuFlameMaster:0.5.3'
+        classpath 'hutcwp:mvppresenter:1.0.7'
+        classpath 'hutcwp:mvppresenter-compiler:1.0.7'
+
+
         classpath 'com.android.tools.build:gradle:2.3.0'
         classpath 'net.wequick.tools.build:gradle-small:1.5.0-beta2'
         // NOTE: Do not place your application dependencies here; they belong

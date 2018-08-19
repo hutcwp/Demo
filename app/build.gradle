@@ -39,6 +39,7 @@ android {
 dependencies {
     compile 'hutcwp:mvppresenter:1.0.7'
     annotationProcessor 'hutcwp:mvppresenter-compiler:1.0.7'
+
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:28.0.0-alpha3'
     compile 'com.android.support.constraint:constraint-layout:1.1.2'

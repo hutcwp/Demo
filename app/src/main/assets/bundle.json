@@ -10,6 +10,11 @@
       "type": "app",
       "uri": "test",
       "pkg": "com.hutcwp.app.test"
+    },
+    {
+      "type": "app",
+      "uri": "livebiz",
+      "pkg": "com.hutcwp.livebiz"
     }
   ]
 }
