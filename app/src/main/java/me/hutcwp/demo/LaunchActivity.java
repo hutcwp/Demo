@@ -37,12 +37,12 @@ public class LaunchActivity extends AppCompatActivity{
                     getWindow().getDecorView().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            Small.openUri("livebiz", LaunchActivity.this);
+                            Small.openUri("main", LaunchActivity.this);
                             finish();
                         }
                     }, (MIN_INTRO_DISPLAY_TIME - offset) / 1000000);
                 } else {
-                    Small.openUri("livebiz", LaunchActivity.this);
+                    Small.openUri("main", LaunchActivity.this);
                     finish();
                 }
             }

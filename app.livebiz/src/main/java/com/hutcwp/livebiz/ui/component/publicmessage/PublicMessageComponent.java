@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.hutcwp.livebiz.base.Component;
+import com.hutcwp.livebiz.ui.component.Component;
 
 import hut.cwp.mvp.BindPresenter;
 import com.hutcwp.livebiz.R;

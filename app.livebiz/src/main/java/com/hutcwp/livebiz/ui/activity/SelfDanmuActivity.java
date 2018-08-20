@@ -8,8 +8,8 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.hutcwp.livebiz.R;
-import com.hutcwp.livebiz.danmu.Barrage;
-import com.hutcwp.livebiz.danmu.BarrageView;
+import com.hutcwp.livebiz.ui.view.danmu.Barrage;
+import com.hutcwp.livebiz.ui.view.danmu.BarrageView;
 
 import hut.cwp.annotations.BindView;
 import hut.cwp.annotations.OnClick;

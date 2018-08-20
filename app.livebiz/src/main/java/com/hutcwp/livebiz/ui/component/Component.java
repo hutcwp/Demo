@@ -1,4 +1,4 @@
-package com.hutcwp.livebiz.base;
+package com.hutcwp.livebiz.ui.component;
 
 import android.support.v4.app.FragmentManager;
 

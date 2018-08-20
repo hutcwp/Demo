@@ -1,4 +1,4 @@
-package com.hutcwp.livebiz.danmu;
+package com.hutcwp.livebiz.ui.view.danmu;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -6,8 +6,8 @@ import android.util.Log;
 import android.view.animation.Animation;
 import android.widget.RelativeLayout;
 
-import static com.hutcwp.livebiz.danmu.AnimationHelper.getScreenHeight;
-import static com.hutcwp.livebiz.danmu.AnimationHelper.getScreenWidth;
+import static com.hutcwp.livebiz.ui.view.danmu.AnimationHelper.getScreenHeight;
+import static com.hutcwp.livebiz.ui.view.danmu.AnimationHelper.getScreenWidth;
 
 
 public class BarrageView extends RelativeLayout {

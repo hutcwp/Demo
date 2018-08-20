@@ -1,4 +1,4 @@
-package com.hutcwp.livebiz.danmu;
+package com.hutcwp.livebiz.ui.view.danmu;
 
 import android.content.Context;
 

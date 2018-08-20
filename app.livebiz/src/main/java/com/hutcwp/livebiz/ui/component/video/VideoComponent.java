@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.MediaController;
 import android.widget.Toast;
 
-import com.hutcwp.livebiz.base.Component;
+import com.hutcwp.livebiz.ui.component.Component;
 import com.hutcwp.livebiz.ui.view.CustomVideoView;
 
 import hut.cwp.mvp.BindPresenter;

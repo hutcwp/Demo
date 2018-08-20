@@ -31,16 +31,6 @@ public class LiveActivity extends MvpActivity<LivePresenter, ILiveActivity> impl
         setContentView(R.layout.activity_live);
         Injector.injectContainer(this);
 
-
-        Small.setUp(this, new Small.OnCompleteListener() {
-
-            @Override
-            public void onComplete() {
-                Small.openUri("livebiz", LiveActivity.this);
-                //启动默认的Activity，参考wiki中的UI route启动其他Activity
-            }
-        });
-
     }
 }
 
