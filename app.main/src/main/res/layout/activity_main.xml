@@ -3,31 +3,59 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#434"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/viewpager"
+
+    <FrameLayout
+        android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
-        <!--
-        This title strip will display the currently visible page title, as well as the pagetitles for adjacent pages.
-        -->
+        android:layout_height="match_parent">
 
-    </android.support.v4.view.ViewPager>
+    </FrameLayout>
 
-    <Button
-        android:onClick="click"
-        android:text="click"
-        android:visibility="gone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
 
-    <!--<FrameLayout-->
-        <!--android:id="@+id/container"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"></FrameLayout>-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#8e8e8e" />
+
+        <LinearLayout
+            android:id="@+id/bottom_nav"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/img_one"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/img_chat" />
+
+            <ImageView
+                android:id="@+id/img_two"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/img_other" />
+
+            <ImageView
+                android:id="@+id/img_three"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/ing_util" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
 
 </RelativeLayout>
