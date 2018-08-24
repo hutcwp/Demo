@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#efefef"
+    >
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="6dp"
+        app:cardElevation="6dp">
+
+        <RelativeLayout
+            android:layout_width="285dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:background="#fff"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/tv_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2018 - 08 - 23"
+                android:textColor="#8e8e8e"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tv_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_date"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="10dp"
+                android:text="02:56 - 09:30"
+                android:textColor="#8e8e8e"
+                android:textSize="16sp" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical|right"
+            android:layout_marginRight="80dp"
+            android:background="#197e7c" />
+
+        <TextView
+            android:id="@+id/tv_statues"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|end"
+            android:layout_margin="20dp"
+            android:text="健康" />
+
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

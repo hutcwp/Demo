@@ -7,6 +7,9 @@ buildscript {
         google()
         jcenter()
         maven {url 'https://dl.bintray.com/jfrogcwp/maven'}
+        maven {
+            url "http://mvn.leancloud.cn/nexus/content/repositories/public"
+        }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.0'
@@ -21,6 +24,9 @@ allprojects {
         google()
         jcenter()
         maven {url 'https://dl.bintray.com/jfrogcwp/maven'}
+        maven {
+            url "http://mvn.leancloud.cn/nexus/content/repositories/public"
+        }
     }
 }
 

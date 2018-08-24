@@ -1,4 +1,4 @@
-package com.hutcwp.main;
+package com.hutcwp.main.ui.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.ashokvarma.bottomnavigation.behaviour.BottomNavBarFabBehaviour;
+import com.hutcwp.main.R;
 import com.hutcwp.main.ui.fragment.ChatFragment;
 import com.hutcwp.main.ui.fragment.OtherFragment;
 import com.hutcwp.main.ui.fragment.UtilFragment;
@@ -30,13 +30,6 @@ public class MainActivity extends AppCompatActivity {
     private static final int CHAT_FRAGMENT = 3;
     private static  int CUR_FRAGMENT = -1;
 
-    /**
-     * The {@link ViewPager} that will host the section contents.
-     */
-    private TabLayout mTabLayout;
-
-    private static String[] sUris = new String[]{"home", "mine", "stub"};
-    private static String[] sTitles = new String[]{"Home", "Mine", "Stub"};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,8 +37,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         initView();
-
-        switchFragment(UTIL_FRAGMENT);
+        switchFragment(OTHER_FRAGMENT);
     }
 
     private void initView() {

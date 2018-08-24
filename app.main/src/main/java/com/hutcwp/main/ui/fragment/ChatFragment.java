@@ -9,10 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.ashokvarma.bottomnavigation.behaviour.BottomNavBarFabBehaviour;
-import com.hutcwp.main.HomeFragment;
 import com.hutcwp.main.R;
-import com.hutcwp.main.SubAdapter;
+import com.hutcwp.main.adapter.SubAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

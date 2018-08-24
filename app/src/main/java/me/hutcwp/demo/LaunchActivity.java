@@ -40,7 +40,7 @@ public class LaunchActivity extends AppCompatActivity{
                             Small.openUri("main", LaunchActivity.this);
                             finish();
                         }
-                    }, (MIN_INTRO_DISPLAY_TIME - offset) / 1000000);
+                    }, 5000);
                 } else {
                     Small.openUri("main", LaunchActivity.this);
                     finish();

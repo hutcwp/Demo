@@ -1,4 +1,4 @@
-package com.hutcwp.main;
+package com.hutcwp.main.adapter;
 
 import android.content.Context;
 import android.support.v4.app.Fragment;
