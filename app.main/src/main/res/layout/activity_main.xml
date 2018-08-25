@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#fff"
     android:orientation="vertical"
-    tools:context=".ui.home.MainActivity">
+    tools:context=".ui.main.MainActivity">
 
 
     <FrameLayout
@@ -22,4 +22,5 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom" />
+
 </LinearLayout>

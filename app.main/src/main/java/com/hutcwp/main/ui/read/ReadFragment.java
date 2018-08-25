@@ -86,7 +86,7 @@ public class ReadFragment extends Fragment {
     private void initialize() {
         mAdapter = new ArticleCategoryAdapter(getChildFragmentManager(), getContext());
         mViewPager.setAdapter(mAdapter);
-        startCheckFail();
+        // startCheckFail();
         getDataFormServer();
     }
 

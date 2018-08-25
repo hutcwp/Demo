@@ -1,4 +1,4 @@
-package com.hutcwp.main.ui.home;
+package com.hutcwp.main.ui.main;
 
 
 import android.os.Bundle;
@@ -7,10 +7,11 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
+
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.hutcwp.main.R;
-import com.hutcwp.main.ui.other.OtherFragment;
+import com.hutcwp.main.ui.home.HomeFragment;
 import com.hutcwp.main.ui.read.ReadFragment;
 import com.hutcwp.main.ui.util.UtilFragment;
 
@@ -38,10 +39,10 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationBar bottomNavigationBar = (BottomNavigationBar) findViewById(R.id.bottom_navigation_bar);
         bottomNavigationBar.setMode(BottomNavigationBar.MODE_FIXED);
         bottomNavigationBar.setBackgroundStyle(BottomNavigationBar.BACKGROUND_STYLE_STATIC);
-        bottomNavigationBar.setBarBackgroundColor(R.color.colorAccent);
-        bottomNavigationBar.addItem(new BottomNavigationItem(R.drawable.img_chat, "阅读").setActiveColorResource(R.color.white))
-                .addItem(new BottomNavigationItem(R.drawable.img_other, "首页").setActiveColorResource(R.color.white))
-                .addItem(new BottomNavigationItem(R.drawable.img_util, "工具").setActiveColorResource(R.color.white))
+        bottomNavigationBar.setBarBackgroundColor(R.color.white);
+        bottomNavigationBar.addItem(new BottomNavigationItem(R.drawable.img_chat, "阅读").setActiveColorResource(R.color.greenery))
+                .addItem(new BottomNavigationItem(R.drawable.img_other, "首页").setActiveColorResource(R.color.greenery))
+                .addItem(new BottomNavigationItem(R.drawable.img_util, "工具").setActiveColorResource(R.color.greenery))
                 .setFirstSelectedPosition(1)
                 .initialise();
         bottomNavigationBar.setTabSelectedListener(new BottomNavigationBar.OnTabSelectedListener() {
@@ -96,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
             case READ_FRAGMENT:
                 return new ReadFragment();
             case OTHER_FRAGMENT:
-                return new OtherFragment();
+                return new HomeFragment();
             case UTIL_FRAGMENT:
                 return new UtilFragment();
             default:

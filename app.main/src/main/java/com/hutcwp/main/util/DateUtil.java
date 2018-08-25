@@ -49,6 +49,14 @@ public class DateUtil {
         return result;
     }
 
+    public static boolean isInTime(String startTime, String endTime) {
+        String curTime = getNowHHmmss();
+        if (subTimeHHmmss(startTime, curTime) > 0 && subTimeHHmmss(curTime, endTime) > 0) {
+            return true;
+        }
+        return false;
+    }
+
     /**
      * 两个日期相减
      *
@@ -147,9 +155,15 @@ public class DateUtil {
 
         Calendar pre = Calendar.getInstance();
         pre.setTime(new Date(preTime));
-        if (pre.get(Calendar.DATE) != mintianday.get(Calendar.DATE)) return false;
-        if (pre.get(Calendar.MONTH) != mintianday.get(Calendar.MONTH)) return false;
-        if (pre.get(Calendar.YEAR) != mintianday.get(Calendar.YEAR)) return false;
+        if (pre.get(Calendar.DATE) != mintianday.get(Calendar.DATE)) {
+            return false;
+        }
+        if (pre.get(Calendar.MONTH) != mintianday.get(Calendar.MONTH)) {
+            return false;
+        }
+        if (pre.get(Calendar.YEAR) != mintianday.get(Calendar.YEAR)) {
+            return false;
+        }
         return true;
     }
 
@@ -158,9 +172,15 @@ public class DateUtil {
         Calendar pre = Calendar.getInstance();
         pre.setTime(new Date(preTime));
 
-        if (pre.get(Calendar.DATE) != cal.get(Calendar.DATE)) return false;
-        if (pre.get(Calendar.MONTH) != cal.get(Calendar.MONTH)) return false;
-        if (pre.get(Calendar.YEAR) != cal.get(Calendar.YEAR)) return false;
+        if (pre.get(Calendar.DATE) != cal.get(Calendar.DATE)) {
+            return false;
+        }
+        if (pre.get(Calendar.MONTH) != cal.get(Calendar.MONTH)) {
+            return false;
+        }
+        if (pre.get(Calendar.YEAR) != cal.get(Calendar.YEAR)) {
+            return false;
+        }
         return true;
     }
 
@@ -173,9 +193,15 @@ public class DateUtil {
 
         Calendar pre = Calendar.getInstance();
         pre.setTime(new Date(preTime));
-        if (pre.get(Calendar.DATE) != mintianday.get(Calendar.DATE)) return false;
-        if (pre.get(Calendar.MONTH) != mintianday.get(Calendar.MONTH)) return false;
-        if (pre.get(Calendar.YEAR) != mintianday.get(Calendar.YEAR)) return false;
+        if (pre.get(Calendar.DATE) != mintianday.get(Calendar.DATE)) {
+            return false;
+        }
+        if (pre.get(Calendar.MONTH) != mintianday.get(Calendar.MONTH)) {
+            return false;
+        }
+        if (pre.get(Calendar.YEAR) != mintianday.get(Calendar.YEAR)) {
+            return false;
+        }
         return true;
     }
 
@@ -257,7 +283,9 @@ public class DateUtil {
         //int d1 = c.get(Calendar.DAY_OF_MONTH);
         Date today = c.getTime();
         long diff = today.getTime() - msgTime;
-        if (diff < 0) diff = 0;
+        if (diff < 0) {
+            diff = 0;
+        }
         long days = diff / (1000 * 60 * 60 * 24);
 
         c.clear();
@@ -291,7 +319,9 @@ public class DateUtil {
         //int d1 = c.get(Calendar.DAY_OF_MONTH);
         Date today = c.getTime();
         long diff = today.getTime() - msgTime;
-        if (diff < 0) diff = 0;
+        if (diff < 0) {
+            diff = 0;
+        }
         long days = diff / (1000 * 60 * 60 * 24);
 
         c.clear();

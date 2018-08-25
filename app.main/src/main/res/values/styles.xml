@@ -13,4 +13,10 @@
         <item name="textAllCaps">false</item>
     </style>
 
+    <style name="RoteMenuItemTheme" >
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:background">@color/niagara</item>
+    </style>
+
 </resources>

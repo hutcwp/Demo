@@ -1,16 +1,18 @@
-package com.hutcwp.main.ui.other.view;
+package com.hutcwp.main.ui.home.view;
 
 import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.hutcwp.main.R;
+import com.hutcwp.main.util.CommonUtil;
 
 public class RoteMenuView extends RelativeLayout {
 
@@ -33,21 +35,38 @@ public class RoteMenuView extends RelativeLayout {
     private ObjectAnimator translationX = new ObjectAnimator();
     private ObjectAnimator translationY = new ObjectAnimator();
 
-    public interface clickListener {
-        void click1();
-        void click2();
-        void click3();
-        void click4();
-        void click5();
-        void click6();
-        void click7();
-        void click8();
-        void click9();
+    public abstract static class ClickListener {
+        public void click1() {
+        }
+
+        public void click2() {
+        }
+
+        public void click3() {
+        }
+
+        public void click4() {
+        }
+
+        public void click5() {
+        }
+
+        public void click6() {
+        }
+
+        public void click7() {
+        }
+
+        public void click8() {
+        }
+
+        public void click9() {
+        }
     }
 
-    private clickListener clickListener;
+    private ClickListener clickListener;
 
-    public void setClickListener(RoteMenuView.clickListener clickListener) {
+    public void setClickListener(ClickListener clickListener) {
         this.clickListener = clickListener;
     }
 
@@ -141,17 +160,24 @@ public class RoteMenuView extends RelativeLayout {
         img5.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (translationY == null || translationX == null) {
-                    return;
-                }
-
-                boolean animRunning = translationX.isRunning() || translationY.isRunning();
-                if (!animRunning) {
-                    startRightAnimation();
-//                    startLeftAnimation();
-                }
+                safeStartAnim(1);
             }
         });
+    }
+
+    private void safeStartAnim(int r) {
+        if (translationY == null || translationX == null) {
+            return;
+        }
+
+        boolean animRunning = translationX.isRunning() || translationY.isRunning();
+        if (!animRunning) {
+            if (r == 0) {
+                startLeftAnimation();
+            } else {
+                startRightAnimation();
+            }
+        }
     }
 
     /**
@@ -223,6 +249,67 @@ public class RoteMenuView extends RelativeLayout {
         translationY.start();
     }
 
+
+    float statusBarHeight = CommonUtil.getStatusBarHeight(getContext());
+    float mXInView = 0;
+    float mYInView = 0;
+    float mXDownInScreen = 0;
+    float mYDownInScreen = 0;
+    float mXInScreen = 0;
+    float mYInScreen = 0;
+
+    int mDuration = 50;
+
+
+
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
+        return true;
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                Log.d(TAG,"ACTION_DOWN");
+                mXInView = event.getX();
+                mYInView = event.getY();
+                //手指距离屏幕左边的距离getRawX()
+                mXDownInScreen = event.getRawX();
+                mYDownInScreen = event.getRawY() - statusBarHeight;
+                mXInScreen = event.getRawX();
+                mYInScreen = event.getRawY() - statusBarHeight;
+                break;
+            case MotionEvent.ACTION_MOVE:
+                Log.d(TAG,"ACTION_MOVE");
+                mXInScreen = event.getRawX();
+                mYInScreen = event.getRawY() - statusBarHeight;
+                //手指移动的时候更新小悬浮窗的位置。
+                // dx：x方向上移动的距离，dy:y方向上移动的距离
+                int dx = (int) (mXInScreen - mXInView);
+                int dy = (int) (mYInScreen - mYInView);
+                break;
+            case MotionEvent.ACTION_UP:
+                Log.d(TAG,"ACTION_UP");
+                // 如果手指离开屏幕时，xDownInScreen和xInScreen相等，且yDownInScreen和yInScreen相等，则视为触发了单击事件。
+                if (mXDownInScreen == mXInScreen && mYDownInScreen == mYInScreen) {
+                    return false;
+                } else {
+                    float offsetX = mXDownInScreen - mXDownInScreen;
+                    float offsetY = mYInScreen - mYDownInScreen;
+                    Log.d(TAG, "offsetX = " + offsetX);
+                    if (Math.abs(offsetX) > mDuration) {
+                        if (offsetY > 0) {
+                            safeStartAnim(1); //right
+                        } else {
+                            safeStartAnim(0); //left
+                        }
+                    }
+                    return true;
+                }
+        }
+        return false;
+    }
 
     /**
      * 用来记录位置信息

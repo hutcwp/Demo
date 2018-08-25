@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 27
 
     //为了解决部分第三方库重复打包了META-INF的问题
     packagingOptions {
@@ -15,7 +15,7 @@ android {
     defaultConfig {
         applicationId "com.hutcwp.main"
         minSdkVersion 22
-        targetSdkVersion 28
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
 

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff">
+    android:orientation="vertical">
 
     <RelativeLayout
         android:id="@+id/ad"
@@ -15,24 +15,27 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:gravity="center"
-            android:text="总有一天我会变成一只不在垂涎自由的鸟"
+            android:text="总有一天我会变成一只不再垂涎自由的鸟"
             android:textSize="18sp" />
 
         <Button
             android:id="@+id/btn_sign"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
+            android:layout_width="60dp"
+            android:layout_height="35dp"
             android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
             android:layout_margin="10dp"
-            android:text="sign in" />
+            android:textColor="#e9e5e5"
+            android:background="@drawable/btn_cricle"
+            android:text="加油" />
 
     </RelativeLayout>
 
-    <com.hutcwp.main.ui.other.view.RoteMenuView
+    <com.hutcwp.main.ui.home.view.RoteMenuView
         android:id="@+id/rotemenuview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/ad"></com.hutcwp.main.ui.other.view.RoteMenuView>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"/>
 
-</RelativeLayout>
+</LinearLayout>

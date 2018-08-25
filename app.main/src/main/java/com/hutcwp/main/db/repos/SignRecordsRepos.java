@@ -22,7 +22,7 @@ public class SignRecordsRepos {
 
     private static final String TAG = "SignRecordsRepos";
 
-    public static SignRecordsRepos mInstance = new SignRecordsRepos();
+    private static SignRecordsRepos mInstance = new SignRecordsRepos();
 
     public static SignRecordsRepos getInstance() {
         return mInstance;
@@ -44,12 +44,11 @@ public class SignRecordsRepos {
                             newEntity.setEndTime(DateUtil.getNowHHmmss());
                             Log.d(TAG, "insert " + newEntity.toString());
                             getRecordDao().insert(newEntity);
-                        } else {
+                        } else if(DateUtil.isInTime("01:00:00","04:00:00")){
                             entity.setEndTime(DateUtil.getNowHHmmss());
                             Log.d(TAG, "update " + entity.toString());
                             getRecordDao().update(entity);
                         }
-                        SingToast.toast("sign");
                     }
                 }, new Consumer<Throwable>() {
                     @Override
@@ -74,6 +73,7 @@ public class SignRecordsRepos {
                 .getInstance(BasicConfig.getInstance().getAppContext())
                 .getRecordDao();
     }
+
 
     public static class Transform {
 

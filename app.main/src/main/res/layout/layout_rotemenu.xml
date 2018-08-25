@@ -1,23 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:layout_below="@id/ad"
-    android:background="#ab78ab"
-    android:paddingLeft="40dp"
-    android:paddingTop="40dp"
-    android:paddingRight="20dp">
+    android:focusableInTouchMode="true"
+    android:clickable="true"
+    android:focusable="true"
+    android:background="@android:color/transparent">
 
     <TextView
         android:id="@+id/iv_one"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_margin="10dp"
-        android:background="#555f935f"
-        android:gravity="center"
         android:text="1"
-        android:textSize="28sp" />
+        android:theme="@style/RoteMenuItemTheme" />
 
     <TextView
         android:id="@+id/iv_two"
@@ -25,10 +23,9 @@
         android:layout_height="80dp"
         android:layout_margin="10dp"
         android:layout_toRightOf="@id/iv_one"
-        android:background="#555f935f"
-        android:gravity="center"
         android:text="2"
-        android:textSize="28sp" />
+        android:theme="@style/RoteMenuItemTheme"
+        />
 
     <TextView
         android:id="@+id/iv_three"
@@ -36,10 +33,8 @@
         android:layout_height="80dp"
         android:layout_margin="10dp"
         android:layout_toRightOf="@id/iv_two"
-        android:background="#555f935f"
-        android:gravity="center"
         android:text="3"
-        android:textSize="28sp" />
+        android:theme="@style/RoteMenuItemTheme" />
 
     <TextView
         android:id="@+id/iv_four"
@@ -47,10 +42,8 @@
         android:layout_height="80dp"
         android:layout_below="@id/iv_one"
         android:layout_margin="10dp"
-        android:background="#555f935f"
-        android:gravity="center"
         android:text="4"
-        android:textSize="28sp" />
+        android:theme="@style/RoteMenuItemTheme" />
 
     <TextView
         android:id="@+id/iv_five"
@@ -59,10 +52,8 @@
         android:layout_below="@id/iv_two"
         android:layout_margin="10dp"
         android:layout_toRightOf="@+id/iv_four"
-        android:background="#555f935f"
-        android:gravity="center"
         android:text="5"
-        android:textSize="28sp" />
+        android:theme="@style/RoteMenuItemTheme" />
 
     <TextView
         android:id="@+id/iv_six"
@@ -71,10 +62,8 @@
         android:layout_below="@id/iv_three"
         android:layout_margin="10dp"
         android:layout_toRightOf="@id/iv_five"
-        android:background="#555f935f"
-        android:gravity="center"
         android:text="6"
-        android:textSize="28sp" />
+        android:theme="@style/RoteMenuItemTheme" />
 
     <TextView
         android:id="@+id/iv_seven"
@@ -82,10 +71,8 @@
         android:layout_height="80dp"
         android:layout_below="@id/iv_four"
         android:layout_margin="10dp"
-        android:background="#555f935f"
-        android:gravity="center"
         android:text="7"
-        android:textSize="28sp" />
+        android:theme="@style/RoteMenuItemTheme" />
 
     <TextView
         android:id="@+id/iv_eight"
@@ -94,10 +81,8 @@
         android:layout_below="@id/iv_four"
         android:layout_margin="10dp"
         android:layout_toRightOf="@id/iv_seven"
-        android:background="#555f935f"
-        android:gravity="center"
         android:text="8"
-        android:textSize="28sp" />
+        android:theme="@style/RoteMenuItemTheme" />
 
     <TextView
         android:id="@+id/iv_nien"
@@ -106,9 +91,7 @@
         android:layout_below="@id/iv_four"
         android:layout_margin="10dp"
         android:layout_toRightOf="@id/iv_eight"
-        android:background="#555f935f"
-        android:gravity="center"
         android:text="9"
-        android:textSize="28sp" />
+        android:theme="@style/RoteMenuItemTheme" />
 
 </RelativeLayout>

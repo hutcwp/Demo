@@ -1,4 +1,4 @@
-package com.hutcwp.main.ui.other;
+package com.hutcwp.main.ui.home;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
