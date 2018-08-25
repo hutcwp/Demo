@@ -1,4 +1,4 @@
-package com.hutcwp.main.ui.fragment;
+package com.hutcwp.main.ui.other;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,14 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
 import com.hutcwp.main.R;
-import com.hutcwp.main.db.repos.RecordsRepos;
-import com.hutcwp.main.model.SignRecord;
-import com.hutcwp.main.ui.activity.SignRecordActivity;
-import com.hutcwp.main.ui.view.RoteMenuView;
-import com.hutcwp.main.util.DateUtil;
+import com.hutcwp.main.db.repos.SignRecordsRepos;
+import com.hutcwp.main.ui.other.view.RoteMenuView;
 
 public class OtherFragment extends Fragment {
 
@@ -36,7 +32,7 @@ public class OtherFragment extends Fragment {
         btnSign.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                RecordsRepos.getInstance().signRecord();
+                SignRecordsRepos.getInstance().signRecord();
             }
         });
 

@@ -29,10 +29,10 @@
 
     </RelativeLayout>
 
-    <com.hutcwp.main.ui.view.RoteMenuView
+    <com.hutcwp.main.ui.other.view.RoteMenuView
         android:id="@+id/rotemenuview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/ad"></com.hutcwp.main.ui.view.RoteMenuView>
+        android:layout_below="@id/ad"></com.hutcwp.main.ui.other.view.RoteMenuView>
 
 </RelativeLayout>

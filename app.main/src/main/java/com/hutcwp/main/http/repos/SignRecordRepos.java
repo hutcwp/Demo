@@ -1,4 +1,4 @@
-package com.hutcwp.main.repos;
+package com.hutcwp.main.http.repos;
 
 import android.util.Log;
 import android.widget.Toast;
@@ -6,6 +6,7 @@ import android.widget.Toast;
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVObject;
 import com.avos.avoscloud.SaveCallback;
+import com.hutcwp.main.db.TableNames;
 import com.hutcwp.main.model.SignRecord;
 
 import static net.wequick.small.Small.getContext;

@@ -1,4 +1,4 @@
-package com.hutcwp.main.ui.fragment;
+package com.hutcwp.main.ui.util;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

@@ -3,7 +3,7 @@ package com.hutcwp.main.db.repos;
 import android.annotation.SuppressLint;
 import android.util.Log;
 
-import com.hutcwp.main.db.RecordDatabase;
+import com.hutcwp.main.db.SignRecordDatabase;
 import com.hutcwp.main.db.dao.SignRecordDao;
 import com.hutcwp.main.db.entitys.SignRecordEntity;
 import com.hutcwp.main.model.SignRecord;
@@ -18,13 +18,13 @@ import io.reactivex.Observable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
-public class RecordsRepos {
+public class SignRecordsRepos {
 
-    private static final String TAG = "RecordsRepos";
+    private static final String TAG = "SignRecordsRepos";
 
-    public static RecordsRepos mInstance = new RecordsRepos();
+    public static SignRecordsRepos mInstance = new SignRecordsRepos();
 
-    public static RecordsRepos getInstance() {
+    public static SignRecordsRepos getInstance() {
         return mInstance;
     }
 
@@ -70,7 +70,7 @@ public class RecordsRepos {
     }
 
     private SignRecordDao getRecordDao() {
-        return RecordDatabase
+        return SignRecordDatabase
                 .getInstance(BasicConfig.getInstance().getAppContext())
                 .getRecordDao();
     }

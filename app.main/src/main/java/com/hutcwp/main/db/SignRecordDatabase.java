@@ -9,22 +9,22 @@ import com.hutcwp.main.db.dao.SignRecordDao;
 import com.hutcwp.main.db.entitys.SignRecordEntity;
 
 @Database(entities = {SignRecordEntity.class},version = 1,exportSchema = false)
-public abstract class RecordDatabase extends RoomDatabase {
+public abstract class SignRecordDatabase extends RoomDatabase {
 
-    private static final String DB_NAME = "RecordDatabase.db";
-    private static volatile RecordDatabase instance;
+    private static final String DB_NAME = "SignRecordDatabase.db";
+    private static volatile SignRecordDatabase instance;
 
-    public static synchronized RecordDatabase getInstance(Context context) {
+    public static synchronized SignRecordDatabase getInstance(Context context) {
         if (instance == null) {
             instance = create(context);
         }
         return instance;
     }
 
-    private static RecordDatabase create(final Context context) {
+    private static SignRecordDatabase create(final Context context) {
         return Room.databaseBuilder(
                 context,
-                RecordDatabase.class,
+                SignRecordDatabase.class,
                 DB_NAME).build();
     }
 

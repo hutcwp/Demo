@@ -4,15 +4,21 @@
     android:layout_height="match_parent"
     android:background="#fff">
 
-    <TextView
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:text="hahah"
-        android:textColor="#000"
-        android:textSize="22sp" />
+        android:layout_height="match_parent">
 
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+    <com.hutcwp.main.ui.view.LoadView
+        android:id="@+id/loadview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </FrameLayout>

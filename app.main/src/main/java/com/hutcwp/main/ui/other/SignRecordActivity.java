@@ -1,4 +1,4 @@
-package com.hutcwp.main.ui.activity;
+package com.hutcwp.main.ui.other;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -9,7 +9,7 @@ import android.util.Log;
 
 import com.hutcwp.main.R;
 import com.hutcwp.main.adapter.SignRecordAdapter;
-import com.hutcwp.main.db.repos.RecordsRepos;
+import com.hutcwp.main.db.repos.SignRecordsRepos;
 import com.hutcwp.main.model.SignRecord;
 
 import java.util.ArrayList;
@@ -50,7 +50,7 @@ public class SignRecordActivity extends AppCompatActivity {
                 .flatMap(new Function<String, ObservableSource<List<SignRecord>>>() {
                     @Override
                     public ObservableSource<List<SignRecord>> apply(String s) {
-                        List<SignRecord> records = RecordsRepos.getInstance().getSignRecords();
+                        List<SignRecord> records = SignRecordsRepos.getInstance().getSignRecords();
                         return Observable.just(records);
                     }
                 })

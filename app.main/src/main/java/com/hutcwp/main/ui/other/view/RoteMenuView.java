@@ -1,4 +1,4 @@
-package com.hutcwp.main.ui.view;
+package com.hutcwp.main.ui.other.view;
 
 import android.animation.ObjectAnimator;
 import android.content.Context;
@@ -35,21 +35,13 @@ public class RoteMenuView extends RelativeLayout {
 
     public interface clickListener {
         void click1();
-
         void click2();
-
         void click3();
-
         void click4();
-
         void click5();
-
         void click6();
-
         void click7();
-
         void click8();
-
         void click9();
     }
 
@@ -132,9 +124,6 @@ public class RoteMenuView extends RelativeLayout {
                 new Position(img8.getX(), img8.getY()),
                 new Position(img9.getX(), img9.getY()),
         };
-        for (Position imgItem : imgItems) {
-            Log.d(TAG, "x = " + imgItem.x + "  y = " + imgItem.y);
-        }
     }
 
     private void initListener() {
@@ -158,8 +147,8 @@ public class RoteMenuView extends RelativeLayout {
 
                 boolean animRunning = translationX.isRunning() || translationY.isRunning();
                 if (!animRunning) {
-//                    startRightAnimation();
-                    startLeftAnimation();
+                    startRightAnimation();
+//                    startLeftAnimation();
                 }
             }
         });
