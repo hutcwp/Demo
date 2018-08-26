@@ -263,7 +263,7 @@ public class RoteMenuView extends RelativeLayout {
     float mXInScreen = 0;
     float mYInScreen = 0;
 
-    int mDuration = 50;
+    int mDuration = 200;
 
 
     @Override
@@ -292,7 +292,6 @@ public class RoteMenuView extends RelativeLayout {
                 // dx：x方向上移动的距离，dy:y方向上移动的距离
                 int dx = (int) (mXInScreen - mXInView);
                 int dy = (int) (mYInScreen - mYInView);
-
                 break;
             case MotionEvent.ACTION_UP:
                 Log.d(TAG, "ACTION_UP");
@@ -302,17 +301,18 @@ public class RoteMenuView extends RelativeLayout {
                 } else {
                     float offsetX = mXInScreen - mXDownInScreen;
                     float offsetY = mYInScreen - mYDownInScreen;
-
                     if (Math.abs(offsetX) < Math.abs(offsetY)) {
                         Log.d(TAG, String.format("mYInScreen(%s) - mYDownInScreen(%s) = offsetY(%s) ", mYInScreen, mYDownInScreen, offsetY));
                         if (mXInView < getWidth() / 3) {
-                            if (offsetY> 0) {
+                            //左半部分上下滑动
+                            if (offsetY > 0) {
                                 safeStartAnim(TURN_LEFT);
                             } else {
                                 safeStartAnim(TURN_RIGHT);
                             }
                         } else if (mXInView > getWidth() * (2 / 3f)) {
-                            if (offsetX > 0) {
+                            //右半部分上下滑动
+                            if (offsetY > 0) {
                                 safeStartAnim(TURN_RIGHT);
                             } else {
                                 safeStartAnim(TURN_LEFT);
@@ -322,10 +322,23 @@ public class RoteMenuView extends RelativeLayout {
                     } else {
                         Log.d(TAG, String.format("mXInScreen(%s) - mXDownInScreen(%s) = offsetX(%s) ", mXInScreen, mXDownInScreen, offsetX));
                         if (mYInView < getHeight() / 3) {
-                            scrollTopHorionzel(offsetX);
+                            //上部分左右滑动
+                            if (Math.abs(offsetX) > mDuration) {
+                                if (offsetX > 0) {
+                                    safeStartAnim(TURN_RIGHT);
+                                } else {
+                                    safeStartAnim(TURN_LEFT);
+                                }
+                            }
                         } else if (mYInView > getHeight() * (2 / 3f)) {
-
-                            scrollBottomHorionze(offsetX);
+                            //下部分左右滑动
+                            if (Math.abs(offsetX) > mDuration) {
+                                if (offsetX > 0) {
+                                    safeStartAnim(TURN_LEFT);
+                                } else {
+                                    safeStartAnim(TURN_RIGHT);
+                                }
+                            }
                         }
                         return true;
                     }
@@ -334,29 +347,6 @@ public class RoteMenuView extends RelativeLayout {
         return super.onTouchEvent(event);
     }
 
-    private void scrollBottomHorionze(float offsetX) {
-        if (Math.abs(offsetX) > mDuration) {
-            if (offsetX > 0) {
-                Log.d(TAG, "turn right ...");
-                safeStartAnim(TURN_LEFT); //right
-            } else {
-                Log.d(TAG, "turn left ...");
-                safeStartAnim(TURN_RIGHT); //left
-            }
-        }
-    }
-
-    private void scrollTopHorionzel(float offsetX) {
-        if (Math.abs(offsetX) > mDuration) {
-            if (offsetX > 0) {
-                Log.d(TAG, "turn right ...");
-                safeStartAnim(TURN_RIGHT); //right
-            } else {
-                Log.d(TAG, "turn left ...");
-                safeStartAnim(TURN_LEFT); //left
-            }
-        }
-    }
 
     /**
      * 用来记录位置信息

@@ -3,13 +3,11 @@ package com.hutcwp.main.db.repos;
 import android.annotation.SuppressLint;
 import android.util.Log;
 
-import com.hutcwp.main.db.SignRecordDatabase;
+import com.hutcwp.main.db.AppDatabase;
 import com.hutcwp.main.db.dao.SignRecordDao;
 import com.hutcwp.main.db.entitys.SignRecordEntity;
 import com.hutcwp.main.model.SignRecord;
-import com.hutcwp.main.util.BasicConfig;
 import com.hutcwp.main.util.DateUtil;
-import com.hutcwp.main.util.SingToast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +42,7 @@ public class SignRecordsRepos {
                             newEntity.setEndTime(DateUtil.getNowHHmmss());
                             Log.d(TAG, "insert " + newEntity.toString());
                             getRecordDao().insert(newEntity);
-                        } else if(DateUtil.isInTime("01:00:00","04:00:00")){
+                        } else if (DateUtil.isInTime("01:00:00", "04:00:00")) {
                             entity.setEndTime(DateUtil.getNowHHmmss());
                             Log.d(TAG, "update " + entity.toString());
                             getRecordDao().update(entity);
@@ -69,9 +67,7 @@ public class SignRecordsRepos {
     }
 
     private SignRecordDao getRecordDao() {
-        return SignRecordDatabase
-                .getInstance(BasicConfig.getInstance().getAppContext())
-                .getRecordDao();
+        return AppDatabase.getInstance().getRecordDao();
     }
 
 
