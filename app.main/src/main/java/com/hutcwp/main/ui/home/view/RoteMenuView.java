@@ -30,6 +30,9 @@ public class RoteMenuView extends RelativeLayout {
     private TextView img8;
     private TextView img9;
 
+    private static final int TURN_LEFT = 1;
+    private static final int TURN_RIGHT = 2;
+
     private Position[] imgItems;
 
     private ObjectAnimator translationX = new ObjectAnimator();
@@ -172,9 +175,9 @@ public class RoteMenuView extends RelativeLayout {
 
         boolean animRunning = translationX.isRunning() || translationY.isRunning();
         if (!animRunning) {
-            if (r == 0) {
+            if (r == TURN_LEFT) {
                 startLeftAnimation();
-            } else {
+            } else if ((r == TURN_RIGHT)) {
                 startRightAnimation();
             }
         }
@@ -184,6 +187,7 @@ public class RoteMenuView extends RelativeLayout {
      * 顺时针旋转
      */
     private void startRightAnimation() {
+        Log.d(TAG, "startAnim Right");
         translateTo(img1, img2, imgItems[1]);
         translateTo(img2, img3, imgItems[2]);
         translateTo(img3, img6, imgItems[3]);
@@ -198,6 +202,7 @@ public class RoteMenuView extends RelativeLayout {
      * 顺时针旋转
      */
     private void startLeftAnimation() {
+        Log.d(TAG, "startAnim Left");
         translateTo(img1, img4, imgItems[1]);
         translateTo(img4, img7, imgItems[4]);
         translateTo(img7, img8, imgItems[7]);
@@ -236,7 +241,7 @@ public class RoteMenuView extends RelativeLayout {
 
     private void translateXTo(View startView, View endView, Position item) {
         float offsetX = endView.getX() - startView.getX();
-        Log.i(TAG, "startX = " + startView.getX() + "  endX = " + endView.getX() + "  offsetX = " + offsetX + "  item.x = " + item.x);
+        // Log.i(TAG, "startX = " + startView.getX() + "  endX = " + endView.getX() + "  offsetX = " + offsetX + "  item.x = " + item.x);
         translationX = ObjectAnimator.ofFloat(startView, "translationX", startView.getX() - item.x + offsetX);
         translationX.setDuration(DURATION);
         translationX.start();
@@ -261,17 +266,16 @@ public class RoteMenuView extends RelativeLayout {
     int mDuration = 50;
 
 
-
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
-        return true;
+        return onTouchEvent(ev);
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                Log.d(TAG,"ACTION_DOWN");
+                Log.d(TAG, "ACTION_DOWN");
                 mXInView = event.getX();
                 mYInView = event.getY();
                 //手指距离屏幕左边的距离getRawX()
@@ -281,34 +285,77 @@ public class RoteMenuView extends RelativeLayout {
                 mYInScreen = event.getRawY() - statusBarHeight;
                 break;
             case MotionEvent.ACTION_MOVE:
-                Log.d(TAG,"ACTION_MOVE");
+                // Log.d(TAG, "ACTION_MOVE");
                 mXInScreen = event.getRawX();
                 mYInScreen = event.getRawY() - statusBarHeight;
                 //手指移动的时候更新小悬浮窗的位置。
                 // dx：x方向上移动的距离，dy:y方向上移动的距离
                 int dx = (int) (mXInScreen - mXInView);
                 int dy = (int) (mYInScreen - mYInView);
+
                 break;
             case MotionEvent.ACTION_UP:
-                Log.d(TAG,"ACTION_UP");
+                Log.d(TAG, "ACTION_UP");
                 // 如果手指离开屏幕时，xDownInScreen和xInScreen相等，且yDownInScreen和yInScreen相等，则视为触发了单击事件。
                 if (mXDownInScreen == mXInScreen && mYDownInScreen == mYInScreen) {
                     return false;
                 } else {
-                    float offsetX = mXDownInScreen - mXDownInScreen;
+                    float offsetX = mXInScreen - mXDownInScreen;
                     float offsetY = mYInScreen - mYDownInScreen;
-                    Log.d(TAG, "offsetX = " + offsetX);
-                    if (Math.abs(offsetX) > mDuration) {
-                        if (offsetY > 0) {
-                            safeStartAnim(1); //right
-                        } else {
-                            safeStartAnim(0); //left
+
+                    if (Math.abs(offsetX) < Math.abs(offsetY)) {
+                        Log.d(TAG, String.format("mYInScreen(%s) - mYDownInScreen(%s) = offsetY(%s) ", mYInScreen, mYDownInScreen, offsetY));
+                        if (mXInView < getWidth() / 3) {
+                            if (offsetY> 0) {
+                                safeStartAnim(TURN_LEFT);
+                            } else {
+                                safeStartAnim(TURN_RIGHT);
+                            }
+                        } else if (mXInView > getWidth() * (2 / 3f)) {
+                            if (offsetX > 0) {
+                                safeStartAnim(TURN_RIGHT);
+                            } else {
+                                safeStartAnim(TURN_LEFT);
+                            }
                         }
+                        return true;
+                    } else {
+                        Log.d(TAG, String.format("mXInScreen(%s) - mXDownInScreen(%s) = offsetX(%s) ", mXInScreen, mXDownInScreen, offsetX));
+                        if (mYInView < getHeight() / 3) {
+                            scrollTopHorionzel(offsetX);
+                        } else if (mYInView > getHeight() * (2 / 3f)) {
+
+                            scrollBottomHorionze(offsetX);
+                        }
+                        return true;
                     }
-                    return true;
                 }
         }
-        return false;
+        return super.onTouchEvent(event);
+    }
+
+    private void scrollBottomHorionze(float offsetX) {
+        if (Math.abs(offsetX) > mDuration) {
+            if (offsetX > 0) {
+                Log.d(TAG, "turn right ...");
+                safeStartAnim(TURN_LEFT); //right
+            } else {
+                Log.d(TAG, "turn left ...");
+                safeStartAnim(TURN_RIGHT); //left
+            }
+        }
+    }
+
+    private void scrollTopHorionzel(float offsetX) {
+        if (Math.abs(offsetX) > mDuration) {
+            if (offsetX > 0) {
+                Log.d(TAG, "turn right ...");
+                safeStartAnim(TURN_RIGHT); //right
+            } else {
+                Log.d(TAG, "turn left ...");
+                safeStartAnim(TURN_LEFT); //left
+            }
+        }
     }
 
     /**
