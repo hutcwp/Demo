@@ -57,19 +57,21 @@ public class AddDialogFragment extends DialogFragment {
                     return;
                 }
 
-                final Account account = new Account();
-                account.setUsername(evName.getText().toString().trim());
-                account.setPassword(evPassword.getText().toString().trim());
-                account.setType(0);
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
+                        final Account account = new Account();
+                        account.setUsername(evName.getText().toString().trim());
+                        account.setPassword(evPassword.getText().toString().trim());
+                        account.setType(0);
                         AccountRepos.getmInstance().addAccount(account);
                     }
                 }).start();
+
+                dismissAllowingStateLoss();
             }
         });
-        btnConfirm.setOnClickListener(new View.OnClickListener() {
+        btnCancle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 dismissAllowingStateLoss();

@@ -31,5 +31,7 @@ public interface  AccountDao {
     @Delete
     void delete(AccountEntity... account);
 
+    @Query("delete from account where id = :id")
+    void deleteById(int  id);
 
 }

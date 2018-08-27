@@ -1,5 +1,7 @@
 package com.hutcwp.main.db.repos;
 
+import android.util.Log;
+
 import com.hutcwp.main.db.AppDatabase;
 import com.hutcwp.main.db.dao.AccountDao;
 import com.hutcwp.main.db.entitys.AccountEntity;
@@ -25,30 +27,31 @@ public class AccountRepos {
         return mInstance;
     }
 
-    public void addAccount(Account account){
+    public void addAccount(Account account) {
+        Log.d(TAG, "addAccount: ");
         getAccountDao().insert(Transform.toEntity(account));
     }
 
     public List<Account> getAccounts() {
         List<AccountEntity> entityList = getAccountDao().getAllAccount();
         List<Account> beanList = new ArrayList<>();
-        for(AccountEntity entity : entityList){
+        for (AccountEntity entity : entityList) {
             beanList.add(Transform.toBean(entity));
         }
         return beanList;
     }
 
-    private AccountDao getAccountDao(){
+    private AccountDao getAccountDao() {
         return AppDatabase.getInstance().getAccountDao();
     }
 
 
-    public void deleteAccount(final Account bean){
+    public void deleteAccount(final Account bean) {
         SingToast.toast("删除");
         new Thread(new Runnable() {
             @Override
             public void run() {
-                getAccountDao().delete(Transform.toEntity(bean));
+                getAccountDao().deleteById(Transform.toEntity(bean).getId());
 
             }
         }).start();
@@ -60,6 +63,9 @@ public class AccountRepos {
 
         public static AccountEntity toEntity(Account bean) {
             AccountEntity entity = new AccountEntity();
+            if (bean.getId() != 0) {
+                entity.setId(bean.getId());
+            }
             entity.setPassword(bean.getPassword());
             entity.setType(bean.getType());
             entity.setUsername(bean.getUsername());
@@ -68,6 +74,7 @@ public class AccountRepos {
 
         public static Account toBean(AccountEntity entity) {
             Account bean = new Account();
+            bean.setId(entity.getId());
             bean.setUsername(entity.getUsername());
             bean.setPassword(entity.getPassword());
             bean.setType(entity.getType());

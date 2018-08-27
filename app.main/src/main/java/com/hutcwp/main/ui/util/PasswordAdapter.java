@@ -28,7 +28,8 @@ public class PasswordAdapter extends BaseRvAdpater<Account> {
 
     @Override
     public void onBindViewHolder(BaseRvAdpater.mHolder holder, final int position) {
-        TextView tvPassword = holder.getRoot().findViewById(R.id.tv_name);
+        TextView tvName = holder.getRoot().findViewById(R.id.tv_name);
+        TextView tvPwd = holder.getRoot().findViewById(R.id.tv_password);
         Button btnDelete = holder.getRoot().findViewById(R.id.btn_delete);
 
         btnDelete.setOnClickListener(new View.OnClickListener() {
@@ -37,6 +38,7 @@ public class PasswordAdapter extends BaseRvAdpater<Account> {
                 AccountRepos.getmInstance().deleteAccount(dataList.get(position));
             }
         });
-        tvPassword.setText(dataList.get(position).getUsername());
+        tvPwd.setText(dataList.get(position).getPassword());
+        tvName.setText(dataList.get(position).getUsername());
     }
 }

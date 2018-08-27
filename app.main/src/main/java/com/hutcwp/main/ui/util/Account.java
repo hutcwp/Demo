@@ -8,6 +8,16 @@ package com.hutcwp.main.ui.util;
 
 public class Account {
 
+    int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     private String username;
     private String password;
     private int type;
