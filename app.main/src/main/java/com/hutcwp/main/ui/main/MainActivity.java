@@ -15,6 +15,8 @@ import com.hutcwp.main.ui.home.HomeFragment;
 import com.hutcwp.main.ui.read.ReadFragment;
 import com.hutcwp.main.ui.util.UtilFragment;
 
+import net.wequick.small.Small;
+
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
@@ -23,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String OTHER_FRAGMENT = "OTHER_FRAGMENT";
     private static final String UTIL_FRAGMENT = "UTIL_FRAGMENT";
     private static final String READ_FRAGMENT = "READ_FRAGMENT";
+    private static final String DYNAMIC_FRAGMENT = "DYNAMIC_FRAGMENT";
 
 
     private Fragment curFragment;
@@ -43,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationBar.addItem(new BottomNavigationItem(R.drawable.img_chat, "阅读").setActiveColorResource(R.color.greenery))
                 .addItem(new BottomNavigationItem(R.drawable.img_other, "首页").setActiveColorResource(R.color.greenery))
                 .addItem(new BottomNavigationItem(R.drawable.img_util, "工具").setActiveColorResource(R.color.greenery))
+                .addItem(new BottomNavigationItem(R.drawable.img_dynamic, "动态").setActiveColorResource(R.color.greenery))
                 .setFirstSelectedPosition(1)
                 .initialise();
         bottomNavigationBar.setTabSelectedListener(new BottomNavigationBar.OnTabSelectedListener() {
@@ -58,6 +62,8 @@ public class MainActivity extends AppCompatActivity {
                     case 2:
                         switchFragment(UTIL_FRAGMENT);
                         break;
+                    case 3:
+                        startDynamicPlugin();
                 }
             }
 
@@ -71,7 +77,10 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+    }
 
+    private void startDynamicPlugin() {
+        Small.openUri("dynamic", MainActivity.this);
     }
 
     private void switchFragment(String tag) {

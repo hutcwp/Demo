@@ -17,6 +17,11 @@
       "pkg": "com.hutcwp.livebiz"
     },
     {
+      "type": "app",
+      "uri": "dynamic",
+      "pkg": "me.hutcwp.app.dynamic"
+    },
+    {
       "type": "lib",
       "uri": "lib.vendor",
       "pkg": "com.hutcwp.libvendor"

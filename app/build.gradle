@@ -1,11 +1,11 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 26
     defaultConfig {
         applicationId "me.hutcwp.demo"
         minSdkVersion 15
-        targetSdkVersion 28
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -34,82 +34,17 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_7
         targetCompatibility JavaVersion.VERSION_1_7
     }
+    dataBinding {
+        enabled true
+    }
 }
 
 dependencies {
-
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:28.0.0-alpha3'
+    compile 'com.android.support:support-v4:26.0.2'
+    compile 'com.android.support:appcompat-v7:26.0.2'
     compile 'com.android.support.constraint:constraint-layout:1.1.2'
-    testCompile 'junit:junit:4.12'
-    androidTestCompile 'com.android.support.test:runner:1.0.2'
-    androidTestCompile 'com.android.support.test.espresso:espresso-core:3.0.2'
-
-    //    compile("io.reactivex.rxjava2:rxjava:${rxjava_version}") {
-
-    //        exclude group: 'com.android.support', module: 'appcompat-v7'
-
-    //    }
-
-    //    compile("io.reactivex.rxjava2:rxandroid:${rxandroid_version}") {
-
-    //        exclude group: 'com.android.support', module: 'appcompat-v7'
-
-    //        exclude group: 'io.reactivex.rxjava2', module: 'rxjava'
-
-    //    }
-
-    //    compile("com.trello.rxlifecycle2:rxlifecycle:${rxlifecycle_version}") {
-
-    //        exclude group: 'com.android.support', module: 'appcompat-v7'
-
-    //        exclude group: 'com.google.code.findbugs', module: 'jsr305'
-
-    //        exclude group: 'com.android.support', module: 'support-annotations'
-
-    //        exclude group: 'io.reactivex.rxjava2', module: 'rxjava'
-
-    //    }
-
-    //    compile("com.trello.rxlifecycle2:rxlifecycle-android:${rxlifecycle_version}") {
-
-    //        exclude group: 'com.android.support', module: 'appcompat-v7'
-
-    //        exclude group: 'com.google.code.findbugs', module: 'jsr305'
-
-    //        exclude group: 'com.android.support', module: 'support-annotations'
-
-    //        exclude group: 'com.trello.rxlifecycle2', module: 'rxlifecycle'
-
-    //        exclude group: 'io.reactivex.rxjava2', module: 'rxjava'
-
-    //        exclude group: 'io.reactivex.rxjava2', module: 'rxandroid'
-
-    //    }
-
-    //    compile("com.trello.rxlifecycle2:rxlifecycle-components:${rxlifecycle_version}") {
-
-    //        exclude group: 'com.android.support', module: 'appcompat-v7'
-
-    //        exclude group: 'com.google.code.findbugs', module: 'jsr305'
-
-    //        exclude group: 'com.android.support', module: 'support-annotations'
-
-    //        exclude group: 'io.reactivex.rxjava2', module: 'rxjava'
-
-    //        exclude group: 'io.reactivex.rxjava2', module: 'rxandroid'
-
-    //    }
-
-    //    compile('com.jakewharton.rxrelay2:rxrelay:2.0.0') {
-
-    //        exclude group: 'com.android.support', module: 'appcompat-v7'
-
-    //        exclude group: 'com.google.code.findbugs', module: 'jsr305'
-
-    //        exclude group: 'com.android.support', module: 'support-annotations'
-
-    //        exclude group: 'io.reactivex.rxjava2', module: 'rxjava'
-
-    //    }
+    //    testCompile 'junit:junit:4.12'
+    //    androidTestCompile 'com.android.support.test:runner:1.0.2'
+    //    androidTestCompile 'com.android.support.test.espresso:espresso-core:3.0.2'
 }

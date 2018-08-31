@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+
+            <TextView
+                android:id="@+id/toolbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/topic"
+                android:textColor="#000"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/btn_publish"
+                android:layout_width="60dp"
+                android:layout_height="30dp"
+                android:layout_gravity="end"
+                android:background="@drawable/btn_circle"
+                android:gravity="center"
+                android:text="@string/publish"
+                android:textColor="#8e8e8e"
+                android:textSize="16sp" />
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#8e8e8e" />
+
+        <EditText
+            android:id="@+id/et_content"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:layout_margin="8dp"
+            android:background="@drawable/btn_circle"
+            android:maxLines="3"
+            android:padding="10dp"
+            android:textColor="#000"
+            android:textSize="22sp" />
+
+        <ImageButton
+            android:id="@+id/ib_add_img"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:background="@drawable/add_photo" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp"
+            android:scrollbars="none">
+
+            <me.hutcwp.app.dynamic.view.MultiImageView
+                android:id="@+id/mib_photo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp" />
+
+        </ScrollView>
+
+    </LinearLayout>
+
+</layout>

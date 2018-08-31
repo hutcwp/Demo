@@ -1,1 +1,1 @@
-include ':app', ':app.main', ':app.livebiz', ':lib.vendor'
+include ':app', ':app.main', ':app.livebiz', ':lib.vendor', ':app.dynamic'
