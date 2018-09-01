@@ -44,12 +44,12 @@ public class LoginActivity extends BaseActivity implements ILoginView {
     protected void loadData() {
         //自动登录
         //执行登录操作
-        if (UserModelImp.getInstance().login("123456", "123456")) {
-            toast("登录成功！");
-            gotoActivity(HomeActivity.class, true);
-        } else {
-            toast("登录失败！");
-        }
+//        if (UserModelImp.getInstance().login("123456", "123456")) {
+//            toast("登录成功！");
+//            gotoActivity(HomeActivity.class, true);
+//        } else {
+//            toast("登录失败！");
+//        }
     }
 
     @Override

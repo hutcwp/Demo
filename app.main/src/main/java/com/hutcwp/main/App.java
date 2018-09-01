@@ -16,4 +16,6 @@ public class App extends Application {
         // 初始化参数依次为 this, AppId, AppKey
         AVOSCloud.initialize(this,"rV6smcRoQUQLoAMzeUAnaVqN-gzGzoHsz","MfPdfFjrYfhIiG7jGaoH2iDx");
     }
+
+
 }

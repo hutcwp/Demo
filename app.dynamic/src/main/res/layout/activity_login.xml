@@ -12,6 +12,13 @@
         android:orientation="vertical"
         android:padding="80dp">
 
+        <TextView
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="有问题的布局" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">

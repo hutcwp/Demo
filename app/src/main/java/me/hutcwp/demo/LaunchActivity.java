@@ -40,7 +40,7 @@ public class LaunchActivity extends AppCompatActivity{
                             Small.openUri("main", LaunchActivity.this);
                             finish();
                         }
-                    }, 5000);
+                    }, 1500);
                 } else {
                     Small.openUri("main", LaunchActivity.this);
                     finish();
