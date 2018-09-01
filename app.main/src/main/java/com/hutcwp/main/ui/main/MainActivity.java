@@ -4,7 +4,6 @@ package com.hutcwp.main.ui.main;
 import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
@@ -17,15 +16,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
 
-
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.hutcwp.main.R;
 import com.hutcwp.main.ui.home.HomeFragment;
 import com.hutcwp.main.ui.read.ReadFragment;
 import com.hutcwp.main.ui.util.UtilFragment;
-import com.hutcwp.main.util.BasicConfig;
-import com.hutcwp.main.util.FileUtils;
 import com.hutcwp.main.util.SingToast;
 import com.hutcwp.main.util.ThreadUtils;
 
@@ -93,7 +89,8 @@ public class MainActivity extends AppCompatActivity {
                         switchFragment(UTIL_FRAGMENT);
                         break;
                     case 3:
-                        startDynamicPlugin();
+                        startLiveBizPlugin();
+//                        startDynamicPlugin();
                 }
             }
 
@@ -107,6 +104,10 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void startLiveBizPlugin(){
+        Small.openUri("livebiz", MainActivity.this);
     }
 
     private void startDynamicPlugin() {

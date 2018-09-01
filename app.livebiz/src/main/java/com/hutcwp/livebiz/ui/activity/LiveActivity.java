@@ -29,7 +29,7 @@ public class LiveActivity extends MvpActivity<LivePresenter, ILiveActivity> impl
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_live);
-        Injector.injectContainer(this);
+//        Injector.injectContainer(this);
 
     }
 }
